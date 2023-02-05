@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect
 from django.urls.base import resolve, reverse
 from django.urls.exceptions import Resolver404
 from django.utils import translation
-from hitcount.views import HitCountMixin
 
 def set_language(request, language):
     for lang, _ in settings.LANGUAGES:
@@ -31,7 +30,7 @@ def set_language(request, language):
 def productList(request):
     # cats = Category.objects.all().order_by("-name")
     new_products = Product.objects.all().order_by("-id")
-    popular_products = Product.objects.all().order_by("hit_count_generic")
+    popular_products = Product.objects.all().order_by("id")
     
     context = {
         "new_products":new_products,
@@ -43,15 +42,8 @@ def productList(request):
 def productDetail(request,pk):
     object = get_object_or_404(Product, pk=pk)
     context = {}
-
-    # hitcount logic
-    hit_count = get_hitcount_model().objects.get_for_object(object)
-    hits = hit_count.hits
-    hit_count_response = HitCountMixin.hit_count(request, hit_count)
-    if hit_count_response.hit_counted:
-        hits = hits + 1
     context["object"] = object
-    popular_products = Product.objects.all().order_by("hit_count_generic")
+    popular_products = Product.objects.all().order_by("id")
     context["popular_products"] = popular_products
     return render(request,"shop/detail.html",context)
 
@@ -59,7 +51,7 @@ def productDetail(request,pk):
 def categoryDetail(request,pk):
     cat = get_object_or_404(Category,pk=pk)
     new_products = cat.product_set.all().all().order_by("-id")
-    popular_products = Product.objects.all().order_by("hit_count_generic")
+    popular_products = Product.objects.all().order_by("id")
     context = {
          "new_products":new_products,
         "popular_products":popular_products

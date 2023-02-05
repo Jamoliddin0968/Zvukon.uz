@@ -21,13 +21,6 @@ from django.conf.urls.i18n import i18n_patterns
 from shop.views import set_language
 
 
-from hitcount.models import Hit , HitCount , BlacklistIP,BlacklistUserAgent
-mymodels = [Hit , HitCount , BlacklistIP,BlacklistUserAgent]
-
-for model in mymodels:
-    if admin.site.is_registered(model):
-        admin.site.unregister(model)
-
 urlpatterns = [
     path("set_language/<str:language>", set_language, name="set-language"),
     path('i18n/',include('django.conf.urls.i18n'))

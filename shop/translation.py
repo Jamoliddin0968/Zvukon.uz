@@ -5,9 +5,6 @@ from modeltranslation.translator import TranslationOptions,register
 class CategoryTranslationOptions(TranslationOptions):
     fields = ("name","description")
     
-@register(Color)
-class ColorTranslationOptions(TranslationOptions):
-    fields = ("name",)
     
 @register(Product)
 class ColorTranslationOptions(TranslationOptions):
