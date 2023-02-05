@@ -66,11 +66,9 @@
                 <!-- Slider thumbnails-->
                 <div class="swiper-container swiper-thumbnails" id="detailSliderThumb">   
                   <div class="swiper-wrapper">
-                    {% for img in object.images  %}
+                    {% for img in object.medium_images %}
                     <div class="swiper-slide"><img class="img-fluid" src={{img}} alt=".."></div>
-  
-                    {% endfor %}
-                    
+                    {% endfor %}  
                   </div>
                 </div>
               </div>
@@ -78,8 +76,10 @@
                 <!-- Item slider-->
                 <div class="swiper-container" id="detailSlider">   
                   <div class="swiper-wrapper">
-                    {% for img in object.images  %}
-                    <div class="swiper-slide"><a class="glightbox" href={{img}}><img class="img-fluid" src={{img}} alt=".."></a></div>
+                    {% for img in object.medium_images  %}
+                    <div class="swiper-slide">
+                      <a class="glightbox" href={{img}}>
+                        <img class="img-fluid" src={{img}} alt=".."></a></div>
                     {% endfor %}
                   </div>
                 </div>
@@ -92,7 +92,7 @@
             <h1>{{object.name}}</h1>
             <div class="d-flex align-items-center">
             </div>
-            <p class="h4">{{product.price}}</p>
+            <p class="h4">{{object.price}}</p>
             <p class="text-small mb-4"></p>
             {% comment %} <div class="d-flex flex-wrap align-items-center mb-4">
               <p class="mb-0 me-3">Select color:</p>

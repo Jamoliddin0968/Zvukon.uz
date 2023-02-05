@@ -5,10 +5,10 @@ from uuid import uuid4
 from hitcount.settings import MODEL_HITCOUNT
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-
+from PIL import Image
+import PIL
 from imagekit.models import ImageSpecField
-from pilkit.processors import ResizeToFill
-
+from pilkit.processors import *
 
 def rename_product_image(instance, filename,upload_to = 'product-image'):
     ext = filename.split('.')[-1]
@@ -59,7 +59,11 @@ class Product(models.Model):
         verbose_name_plural = _("Maxsulotlar")
     @property
     def images(self):
-        return [i.image.url for i in self.image_set.all()]
+        return [i.image_small.url for i in self.image_set.all()]
+    
+    @property
+    def medium_images(self):
+        return [i.image_medium.url for i in self.image_set.all()]
 
 
 class Image(models.Model):
@@ -70,7 +74,13 @@ class Image(models.Model):
 
     image_small = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(190, 280)],
+        processors=[Resize(719, 791)],
+        format='JPEG',
+        options={'quality': 100}
+    )
+    image_medium = ImageSpecField(
+        source='image',
+        processors=[Resize(774, 800)],
         format='JPEG',
         options={'quality': 100}
     )
