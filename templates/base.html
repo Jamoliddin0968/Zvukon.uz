@@ -1,0 +1,178 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <!-- Google fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&amp;display=swap">
+  <!-- Swiper slider-->
+  <link rel="stylesheet" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+  <!-- Lightbox-->
+  <link rel="stylesheet" href="{% static 'vendor/glightbox/css/glightbox.css' %}">
+  <!-- Choices.js-->
+  <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.css' %}">
+  <!-- Nouislider-->
+  <link rel="stylesheet" href="{% static 'vendor/nouislider/nouislider.min.css' %}">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="{% static 'css/style.default.71609fc8.css'  %}" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="{% static 'css/custom.0a822280.css' %}">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="{% static 'img/favicon.9f24e811.png' %}">
+  <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light py-2 py-lg-4 bg-white shadow-sm">
+    <div class="container">
+      <!-- Navbar brand--><a class="navbar-brand" href={% url 'home' %}><img src={% static 'img/logo.9017d31d.svg' %}
+          alt="Patrol online store" width="100"></a>
+      <!-- Navbar toggler-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <!-- Navbar collapse-->
+      <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+        id="navbarSupportedContent">
+        <!-- Navbar menu right-->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item me-lg-3"><a class="nav-link text-uppercase active" aria-current="page" href={% url 'home' %}>{% trans "Bosh sahifa" %}</a></li>
+          <li class="nav-item dropdown me-lg-3"><a class="nav-link text-uppercase dropdown-toggle" id="navbarDropdown"
+             role="button" data-bs-toggle="dropdown" aria-expanded="false">{% trans "Kategoriyalar" %}</a>
+            <ul class="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href={% url 'home' %}>{% trans "Bosh sahifa" %}</a></li>
+              {% for cat in cats %}
+              <li><a class="dropdown-item" href={% url 'categoryDetail' cat.pk %}>{{cat.name}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+        <!-- Navbar menu left-->
+        <!-- {% comment %} <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row">
+          <li class="nav-item me-3"><a class="nav-link text-uppercase position-relative" href="cart.html">
+              <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                <use xlink:href="#retail-bag-1"> </use>
+              </svg><span class="badge rounded-pill bg-primary">2</span></a></li>
+          <li class="nav-item me-3"><a class="nav-link text-uppercase position-relative" href="index.html#"><i
+                class="far fa-heart"></i><span class="badge rounded-pill bg-primary">0</span></a></li>
+          <li class="nav-item"><a class="nav-link text-uppercase" href="login.html">
+              <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                <use xlink:href="#user-1"> </use>
+              </svg></a></li>
+        </ul> {% endcomment %} -->
+        <div class="collapse navbar-collapse" id="navbarTop4">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row">
+              <li class="nav-item dropdown">
+
+                  <a class="nav-link" href="/uz{{request.get_full_path|slice:'3:'}}">
+                      {% trans "Uzbek" %}
+                  </a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link" href="/ru{{request.get_full_path|slice:'3:'}}">
+                      {% trans "Rus" %}
+                  </a>
+              </li>
+          </ul>
+          <ul class="navbar-nav">
+              <li>
+                  <a class="nav-link" style="color:blue" href="{{telegram}}">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+                        </svg>{% trans "Telegram" %}</a>
+              </li>
+              <li>
+                  <a class="nav-link">
+                      <i class="fa fa-phone">
+                      </i>
+                     {{phone}}
+                  </a>
+              </li>
+          </ul>
+          <!-- list-inline //  -->
+      </div>
+      </div>
+    </div>
+  </nav>
+  
+  {% block content %}
+  {% comment %} content qism {% endcomment %}
+  {% endblock content %}
+  <footer class="bg-dark">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+          {% if phone %}
+          <p class="lead mb-1 text-white"><a class="reset-anchor" href="tel:+1 123 456 789">{{phone}}</a></p>
+          {% endif %}
+          <ul class="list-inline mb-0">
+            {% if telegram %}
+             <li class="list-inline-item"><a class="social-icon" href={{telegram}}><i class="fab fa-telegram"></i></a>
+            </li>
+            {% endif %}
+            {% if instagram %}
+            <li class="list-inline-item"><a class="social-icon" href={{instagram}}><i class="fab fa-instagram"></i></a>
+            </li>
+            {% endif %}
+           
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src={% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+  <script src={% static "vendor/swiper/swiper-bundle.min.js" %}></script>
+  <script src={% static "vendor/glightbox/js/glightbox.js" %}></script>
+  <script src={% static "vendor/choices.js/public/assets/scripts/choices.js" %}></script>
+  <script src={% static "vendor/nouislider/nouislider.min.js" %}></script>
+  <script src={% static "js/theme.b8c44118.js" %}></script>
+  <script src={% static "js/js-cookie.55cdbe0d.js" %}> </script>
+  <script src={% static "js/demo.7c677988.js" %}> </script>
+  <script>
+    // ------------------------------------------------------- //
+    //   Inject SVG Sprite - 
+    //   see more here 
+    //   https://css-tricks.com/ajaxing-svg-sprite/
+    // ------------------------------------------------------ //
+    function injectSvgSprite(path) {
+
+      var ajax = new XMLHttpRequest();
+      ajax.open("GET", path, true);
+      ajax.send();
+      ajax.onload = function (e) {
+        var div = document.createElement("div");
+        div.className = 'd-none';
+        div.innerHTML = ajax.responseText;
+        document.body.insertBefore(div, document.body.childNodes[0]);
+      }
+    }
+    // this is set to BootstrapTemple website as you cannot 
+    // inject local SVG sprite (using only 'icons/orion-svg-sprite.c2a8f15b.svg' path)
+    // while using file:// protocol
+    // pls don't forget to change to your domain :)
+    injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+
+
+
+
+  </script>
+  <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+</body>
+
+</html>

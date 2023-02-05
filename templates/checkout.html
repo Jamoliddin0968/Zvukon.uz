@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopio | Bootstrap 5 E-commerce Template by Bootstrapious.com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Google fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&amp;display=swap">
+    <!-- Swiper slider-->
+    <link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
+    <!-- Lightbox-->
+    <link rel="stylesheet" href="vendor/glightbox/css/glightbox.css">
+    <!-- Choices.js-->
+    <link rel="stylesheet" href="vendor/choices.js/public/assets/styles/choices.css">
+    <!-- Nouislider-->
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.71609fc8.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.0a822280.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.9f24e811.png">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
+    <!-- NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-light py-2 py-lg-4">
+      <div class="container">
+        <!-- Navbar brand--><a class="navbar-brand" href="index.html"><img src="img/logo.9017d31d.svg" alt="Patrol online store" width="100"></a>
+        <!-- Navbar toggler-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <!-- Navbar collapse-->
+        <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between" id="navbarSupportedContent">
+          <!-- Navbar menu right-->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item me-lg-3"><a class="nav-link text-uppercase active" aria-current="page" href="index.html">Home</a></li>
+            <li class="nav-item dropdown me-lg-3"><a class="nav-link text-uppercase dropdown-toggle" id="navbarDropdown" href="checkout.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+              <ul class="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="index.html">Homepage</a></li>
+                <li><a class="dropdown-item" href="shop.html">Shop</a></li>
+                <li><a class="dropdown-item" href="detail.html">Item details</a></li>
+                <li><a class="dropdown-item" href="cart.html">Shopping cart</a></li>
+              </ul>
+            </li>
+            <li class="nav-item me-lg-3"><a class="nav-link text-uppercase" href="shop.html">Shop</a></li>
+            <li class="nav-item"><a class="nav-link text-uppercase" href="detail.html">Detail</a></li>
+          </ul>
+          <!-- Navbar menu left-->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row">
+            <li class="nav-item me-3"><a class="nav-link text-uppercase position-relative" href="cart.html">
+                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                  <use xlink:href="#retail-bag-1"> </use>
+                </svg><span class="badge rounded-pill bg-primary">2</span></a></li>
+            <li class="nav-item me-3"><a class="nav-link text-uppercase position-relative" href="checkout.html#"><i class="far fa-heart"></i><span class="badge rounded-pill bg-primary">0</span></a></li>
+            <li class="nav-item"><a class="nav-link text-uppercase" href="login.html">
+                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                  <use xlink:href="#user-1"> </use>
+                </svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--  Modal -->
+    <div class="modal fade" id="productView" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content rounded-0 border-0">
+          <div class="modal-body p-0 overflow-hidden shadow">
+            <div class="row align-items-stretch">
+              <div class="col-lg-6 p-lg-0 modal-product-img"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(img/product-5.5d8c02c5.jpg)" href="img/product-5.5d8c02c5.jpg" data-gallery="productview"></a><a class="glightbox product-view h-100 bg-cover bg-center d-none" href="img/product-5-alt-1.2317c566.jpg" data-gallery="productview"></a><a class="glightbox product-view h-100 bg-cover bg-center d-none" href="img/product-5-alt-2.500c9984.jpg" data-gallery="productview"></a></div>
+              <div class="col-lg-6">
+                <button class="close modal-close p-4 border-0" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">
+                    <svg class="svg-icon text-white mt-1">
+                      <use xlink:href="#close-1"> </use>
+                    </svg></span></button>
+                <div class="p-5 my-md-4">
+                  <ul class="list-inline mb-2">
+                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                  </ul>
+                  <h2 class="h5 text-uppercase">Kui Ye Chen’s AirPods</h2>
+                  <p class="text-muted">$250</p>
+                  <p class="text-small mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.</p>
+                  <ul class="list-inline mb-4">
+                    <li class="list-inline-item me-3"><strong>Quantity</strong></li>
+                    <li class="list-inline-item">
+                      <div class="border d-flex align-items-center justify-content-between p-1">
+                        <div class="quantity py-0">
+                          <button class="dec-btn p-0" onclick="decrease(this)"><i class="fas fa-caret-left"></i></button>
+                          <input class="form-control border-0 shadow-0 p-0 quantity-result" type="text" value="1">
+                          <button class="inc-btn p-0" onclick="increase(this)"><i class="fas fa-caret-right"></i></button>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="list-inline-item"><a class="btn btn-dark" href="cart.html"> 
+                        <svg class="svg-icon text-white me-2 svg-icon-md me-2 pe-1">
+                          <use xlink:href="#shopping-bag-1"> </use>
+                        </svg>Add to cart</a></li>
+                  </ul><a class="p-0 reset-anchor" href="checkout.html#"><i class="far fa-heart me-2"></i>Add to wish list</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Breadcrumb-->
+    <div class="bg-light py-2">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 bg-light">
+            <li class="breadcrumb-item"><a class="reset-anchor" href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Billing information</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <!-- Navigation-->
+            <header class="text-center mb-5">
+              <h2>Billing information</h2>
+            </header>
+            <ul class="nav nav-tabs nav-fill border-bottom mb-5 flex-column flex-md-row">
+              <li class="nav-item"><a class="nav-link disabled" href="checkout.html#">1. Shopping cart</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="checkout.html#">2. Billing Information</a></li>
+              <li class="nav-item"><a class="nav-link disabled" href="checkout.html#">3. Completed</a></li>
+            </ul>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="bg-light d-flex align-items-center justify-content-center justify-content-md-between px-3 py-2 mb-3">
+                  <h6 class="mb-0 py-1">Buyer info</h6>
+                  <p class="text-muted small mb-0 py-1">Returning user? <a class="reset-anchor" href="login.html"> 
+                      <u>login here</u></a></p>
+                </div>
+                <form action="checkout.html#">
+                  <div class="row">
+                    <div class="form-group col-12 mb-3">
+                      <label class="form-label small text-uppercase">Full name</label>
+                      <input class="form-control" type="text" name="name" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group col-12 mb-3">
+                      <label class="form-label small text-uppercase">Email address</label>
+                      <input class="form-control" type="email" name="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group col-12 mb-3">
+                      <label class="form-label small text-uppercase">Adress 1</label>
+                      <input class="form-control" type="text" name="address1" placeholder="Enter your main address">
+                    </div>
+                    <div class="form-group col-12 mb-3">
+                      <label class="form-label small text-uppercase">Address 2</label>
+                      <input class="form-control" type="text" name="address2" placeholder="Enter your alternative address">
+                    </div>
+                    <div class="form-group col-12 mb-3">
+                      <label class="form-label small text-uppercase">City</label>
+                      <input class="form-control" type="text" name="city" placeholder="Enter your city">
+                    </div>
+                    <div class="form-group col-lg-6 mb-3">
+                      <label class="form-label small text-uppercase">State</label>
+                      <select class="form-control js-choice" name="state">
+                        <option value="">Choose your state</option>
+                        <option value="Option 1">Demo state</option>
+                        <option value="Option 1">Demo state</option>
+                        <option value="Option 1">Demo state</option>
+                        <option value="Option 1">Demo state</option>
+                        <option value="Option 1">Demo state</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-lg-6 mb-3">
+                      <label class="form-label small text-uppercase">Full name</label>
+                      <input class="form-control" type="text" name="zipcode" placeholder="Enter city postal colde">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-lg-6">
+                <div class="bg-light px-3 py-2 mb-3">
+                  <h6 class="mb-0 py-1">Payment method</h6>
+                </div>
+                <ul class="nav nav-pills flex-column flex-sm-row mb-4 text-center bg-light" id="pills-tab" role="tablist">
+                  <li class="nav-item flex-fill" role="presentation"><a class="nav-link p-2 rounded-0 active" id="pills-creditCard-tab" data-bs-toggle="pill" href="checkout.html#pills-creditCard" role="tab" aria-controls="pills-creditCard" aria-selected="true"><i class="fab fa-cc-visa me-2"></i><span class="small text-uppercase">Credit card</span></a></li>
+                  <li class="nav-item flex-fill" role="presentation"><a class="nav-link p-2 rounded-0" id="pills-bankTransfer-tab" data-bs-toggle="pill" href="checkout.html#pills-bankTransfer" role="tab" aria-controls="pills-bankTransfer" aria-selected="false"><i class="fas fa-university me-2"></i><span class="small text-uppercase">Bank transfer</span></a></li>
+                  <li class="nav-item flex-fill" role="presentation"><a class="nav-link p-2 rounded-0" id="pills-paypal-tab" data-bs-toggle="pill" href="checkout.html#pills-paypal" role="tab" aria-controls="pills-paypal" aria-selected="false"><i class="fab fa-cc-paypal me-2"></i><span class="small text-uppercase">Paypal</span></a></li>
+                </ul>
+                <div class="tab-content mb-5" id="pills-tabContent">
+                  <div class="tab-pane fade show active" id="pills-creditCard" role="tabpanel" aria-labelledby="pills-creditCard-tab">
+                    <form action="checkout.html#">
+                      <div class="row">
+                        <div class="form-group col-12 mb-3">
+                          <label class="form-label small text-uppercase">Name on card</label>
+                          <input class="form-control" type="text" placeholder="e.g. Jason Doe">
+                        </div>
+                        <div class="form-group col-lg-8 mb-3">
+                          <label class="form-label small text-uppercase">Card number</label>
+                          <input class="form-control" type="text" placeholder="0000-0000-0000-0000">
+                        </div>
+                        <div class="form-group col-lg-4 mb-3">
+                          <label class="form-label small text-uppercase">CVV</label>
+                          <input class="form-control" type="text">
+                        </div>
+                        <div class="form-group col-lg-6 mb-3">
+                          <label class="form-label small text-uppercase">Month</label>
+                          <select class="form-control js-month" name="month" data-trigger>
+                            <option value="">select Month</option>
+                            <option value="Option 1">01</option>
+                            <option value="Option 1">02</option>
+                            <option value="Option 1">03</option>
+                            <option value="Option 1">04</option>
+                            <option value="Option 1">05</option>
+                            <option value="Option 1">06</option>
+                            <option value="Option 1">07</option>
+                            <option value="Option 1">08</option>
+                            <option value="Option 1">09</option>
+                            <option value="Option 1">10</option>
+                            <option value="Option 1">11</option>
+                            <option value="Option 1">12</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label class="form-label small text-uppercase">Year</label>
+                          <select class="form-control js-year" name="year" data-trigger>
+                            <option value="">select Year</option>
+                            <option value="Option 1">2020</option>
+                            <option value="Option 1">2021</option>
+                            <option value="Option 1">2022</option>
+                            <option value="Option 1">2023</option>
+                            <option value="Option 1">2024</option>
+                            <option value="Option 1">2025</option>
+                            <option value="Option 1">2026</option>
+                            <option value="Option 1">2027</option>
+                            <option value="Option 1">2028</option>
+                            <option value="Option 1">2029</option>
+                            <option value="Option 1">2030</option>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="pills-bankTransfer" role="tabpanel" aria-labelledby="pills-bankTransfer-tab">
+                    <form action="checkout.html#">
+                      <div class="row">
+                        <div class="form-group col-lg-6 mb-3">
+                          <label class="form-label small text-uppercase">Routing Number</label>
+                          <input class="form-control" type="text" placeholder="e.g. Jason Doe">
+                        </div>
+                        <div class="form-group col-lg-6 mb-3">
+                          <label class="form-label small text-uppercase">Account number</label>
+                          <input class="form-control" type="text" placeholder="0000-0000-0000-0000">
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                          <label class="form-label small text-uppercase">Name on bank account</label>
+                          <input class="form-control" type="text">
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label class="form-label small text-uppercase">Bank name</label>
+                          <input class="form-control" type="text">
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label class="form-label small text-uppercase">Account type</label>
+                          <select class="form-control js-accountType" name="accountType">
+                            <option value="">Account type</option>
+                            <option value="ARC">ARC </option>
+                            <option value="BOC">BOC </option>
+                            <option value="CCD">CCD </option>
+                            <option value="PPD">PPD </option>
+                            <option value="TEL">TEL </option>
+                            <option value="WEB">WEB</option>
+                          </select>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="pills-paypal" role="tabpanel" aria-labelledby="pills-paypal-tab">
+                    <form action="checkout.html#">
+                      <div class="row">
+                        <div class="form-group col-12 mb-3">
+                          <label class="form-label small text-uppercase">Email address</label>
+                          <input class="form-control" type="text" placeholder="Email address">
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                          <label class="form-label small text-uppercase">Password</label>
+                          <input class="form-control" type="password" placeholder="Password">
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                          <div class="form-check">
+                            <input class="form-check-input" id="flexCheckDefault" type="checkbox">
+                            <label class="form-check-label" for="flexCheckDefault">Stay logged in for faster checkout</label>
+                          </div>
+                        </div>
+                        <div class="form-group col-12">
+                          <button class="btn btn-primary btn-block" type="submit">Login to Paypal</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- Footer-->
+                <div class="bg-light p-4">
+                  <div class="row align-items-center">
+                    <div class="col-md-9">
+                      <ul class="list-inline mb-0">
+                        <li class="list-inline-item py-1"><a class="btn btn-outline-primary" href="cart.html"> <i class="fas fa-shopping-cart me-2"></i>Back to cart</a></li>
+                        <li class="list-inline-item py-1"><a class="btn btn-primary" href="completed.html"> <i class="far fa-credit-card me-2"></i>Place order</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3 text-start text-md-end">
+                      <p class="text-muted mb-1">Cart total</p>
+                      <h6 class="h4 mb-0">$75.00</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-dark">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-md-4 col-sm-12 mb-3 mb-md-0"><img class="img-fluid mb-3" src="img/logo-white.90827790.svg" alt="Patrol" width="120">
+            <p class="text-muted">We are Shopio.</p>
+            <ul class="list-inline">
+              <li class="list-inline-item"><i class="fab fa-cc-visa text-gray"></i></li>
+              <li class="list-inline-item"><i class="fab fa-cc-mastercard text-gray"></i></li>
+              <li class="list-inline-item"><i class="fab fa-cc-discover text-gray"></i></li>
+              <li class="list-inline-item"><i class="fab fa-cc-paypal text-gray"></i></li>
+              <li class="list-inline-item"><i class="fab fa-cc-amex text-gray"></i></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-sm-12 mb-3 mb-md-0">
+            <h6 class="text-white">Menu</h6>
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-2"> <a class="reset-anchor" href="checkout.html#">About</a></li>
+              <li class="mb-2"><a class="reset-anchor" href="checkout.html#">Blog</a></li>
+              <li class="mb-2"><a class="reset-anchor" href="checkout.html#">Contact</a></li>
+              <li class="mb-2"><a class="reset-anchor" href="checkout.html#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-sm-12 mb-3 mb-md-0">
+            <h6 class="text-white">Checkout</h6>
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-2"> <a class="reset-anchor" href="checkout.html#">My Account</a></li>
+              <li class="mb-2"> <a class="reset-anchor" href="checkout.html#">Orders Tracking</a></li>
+              <li class="mb-2"> <a class="reset-anchor" href="checkout.html#">Checkout</a></li>
+              <li class="mb-2"> <a class="reset-anchor" href="checkout.html#">Wishlist</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+            <p class="lead mb-1 text-white"><a class="reset-anchor" href="tel:+1 123 456 789">+1 123 456 789</a></p>
+            <p class="text-muted">12 El Dorado, Las Vegas, AZ</p>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item"><a class="social-icon" href="checkout.html#"><i class="fab fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a class="social-icon" href="checkout.html#"><i class="fab fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a class="social-icon" href="checkout.html#"><i class="fab fa-youtube"></i></a></li>
+              <li class="list-inline-item"><a class="social-icon" href="checkout.html#"><i class="fab fa-pinterest"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="border-top py-4" style="border-color: #1d1d1d !important">
+          <div class="row">
+            <div class="col-lg-6">
+              <p class="small text-muted mb-0">© 2020 All rights reserved.</p>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+              <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/e-commerce-templates">Bootstrapious</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <button class="btn btn-primary btn-sm d-none d-lg-inline-block" type="button" data-bs-toggle="collapse" data-bs-target="#style-switch" id="style-switch-button"><i class="fa fa-cog fa-2x"></i></button>
+    <div class="collapse" id="style-switch">
+      <h5>Select theme colour</h5>
+      <form class="mb-3">
+        <select class="form-select" name="colour" id="colour">
+          <option value="">select colour variant</option>
+          <option value="css/style.default.71609fc8.css">blue</option>
+          <option value="css/style.pink.b81f1242.css">pink</option>
+          <option value="css/style.green.7b4aa6ca.css">green</option>
+          <option value="css/style.violet.2d1e67c1.css">violet</option>
+          <option value="css/style.sea.bdaefcd6.css">sea</option>
+          <option value="css/style.red.a2921bfe.css">red</option>
+        </select>
+      </form>
+      <p><img class="img-fluid" src="img/template-mac.e1286699.png" alt=""></p>
+      <p class="text-muted text-small">Stylesheet switching is done via JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
+    </div>
+    <!-- JavaScript files-->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="vendor/glightbox/js/glightbox.js"></script>
+    <script src="vendor/choices.js/public/assets/scripts/choices.js"></script>
+    <script src="vendor/nouislider/nouislider.min.js"></script>
+    <script src="js/theme.b8c44118.js"></script>
+    <script src="js/js-cookie.55cdbe0d.js"> </script>
+    <script src="js/demo.7c677988.js"> </script>
+    <script>
+      /* ==============================================
+          CUSTOM SELECT
+        ============================================== */
+      const element = document.querySelector('.js-choice');
+      const choices = new Choices(element, {
+          placeholder: true,
+          searchPlaceholderValue: "Search",
+          itemSelectText: 'Select'
+      });
+      const cardMonth = document.querySelector('.js-month');
+      const cardMonthchoices = new Choices(cardMonth, {
+          placeholder: true,
+          searchEnabled: false,
+          itemSelectText: 'Select'
+      });
+      const cardYear = document.querySelector('.js-year');
+      const cardYearchoices = new Choices(cardYear, {
+          placeholder: true,
+          searchEnabled: false,
+          itemSelectText: 'Select'
+      });
+      const accountType = document.querySelector('.js-accountType');
+      const accountTypechoices = new Choices(accountType, {
+          placeholder: true,
+          searchEnabled: false,
+          itemSelectText: 'Select'
+      });
+      
+    </script>
+    <script>
+      // ------------------------------------------------------- //
+      //   Inject SVG Sprite - 
+      //   see more here 
+      //   https://css-tricks.com/ajaxing-svg-sprite/
+      // ------------------------------------------------------ //
+      function injectSvgSprite(path) {
+      
+          var ajax = new XMLHttpRequest();
+          ajax.open("GET", path, true);
+          ajax.send();
+          ajax.onload = function(e) {
+          var div = document.createElement("div");
+          div.className = 'd-none';
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+          }
+      }
+      // this is set to BootstrapTemple website as you cannot 
+      // inject local SVG sprite (using only 'icons/orion-svg-sprite.c2a8f15b.svg' path)
+      // while using file:// protocol
+      // pls don't forget to change to your domain :)
+      injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
+      
+      
+      
+      
+    </script>
+    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </body>
+</html>
