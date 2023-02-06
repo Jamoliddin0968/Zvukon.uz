@@ -4,9 +4,10 @@ from modeltranslation.admin import TranslationAdmin
 
 from django.contrib.auth.models import Group
 
-class ImageInline(admin.TabularInline):
+class ImageInline(admin.StackedInline):
     model = Image
     extra = 1
+    max_num = 4
     
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):

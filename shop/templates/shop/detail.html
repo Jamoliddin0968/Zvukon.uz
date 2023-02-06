@@ -1,4 +1,6 @@
+
 {% extends 'base.html' %}
+{% load static %}
     <!--  Modal -->
 {% block content %}
     <div class="modal fade" id="productView" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
@@ -66,8 +68,13 @@
                 <!-- Slider thumbnails-->
                 <div class="swiper-container swiper-thumbnails" id="detailSliderThumb">   
                   <div class="swiper-wrapper">
-                    {% for img in object.medium_images %}
-                    <div class="swiper-slide"><img class="img-fluid" src={{img}} alt=".."></div>
+                     {% for img in object.medium_images %}
+                     {% if img %}
+                        <div class="swiper-slide"><img class="img-fluid" src="{{img}}" alt=".."></div> 
+                      {% else %}
+                      <div class=swiper-slide"><img class="img-fluid" src="{% static 'img/white.png' %}"></div> 
+                     {% endif %}
+                    
                     {% endfor %}  
                   </div>
                 </div>
@@ -77,9 +84,17 @@
                 <div class="swiper-container" id="detailSlider">   
                   <div class="swiper-wrapper">
                     {% for img in object.medium_images  %}
+                    {% if img %}
                     <div class="swiper-slide">
                       <a class="glightbox" href={{img}}>
                         <img class="img-fluid" src={{img}} alt=".."></a></div>
+                    {% else %}
+                    <div class="swiper-slide">
+                      <p class="glightbox">
+                        <img class="img-fluid">
+                      </p></div>
+                    {% endif %}
+                    
                     {% endfor %}
                   </div>
                 </div>
@@ -191,7 +206,7 @@
                 {% for product in popular_products %}
                 <div class="swiper-slide pb-5">
                   <div class="product mb-4"><span class="badge rounded-0 bg-danger">Soldout</span><a href="{% url 'productDetail' product.pk %}"><img
-                        class="img-fluid" src={{ product.images.0 }} alt="Black Canon EOS camera"></a>
+                        class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera"></a>
                     <div class="cta shadow d-inline-block"><a class="product-btn"><i class="fas fa-heart"></i></a><a
                         class="product-btn" href="{% url 'productDetail' product.pk %}" data-bs-toggle="modal"><i
                           class="fas fa-expand"></i></a><a class="product-btn" href="cart.html"><i

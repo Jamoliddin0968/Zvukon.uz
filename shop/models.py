@@ -2,14 +2,13 @@ from django.db import models
 from django.conf import settings
 import os
 from uuid import uuid4
-from hitcount.settings import MODEL_HITCOUNT
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from PIL import Image
 import PIL
 from imagekit.models import ImageSpecField
 from pilkit.processors import *
-
+from django.conf import settings
 def rename_product_image(instance, filename,upload_to = 'product-image'):
     ext = filename.split('.')[-1]
     if instance.pk:
@@ -54,16 +53,18 @@ class Product(models.Model):
         return self.name
 
     class Meta:
-        #db_table = "Maxsulot"
         verbose_name = _("Maxsulot")
         verbose_name_plural = _("Maxsulotlar")
     @property
-    def images(self):
-        return [i.image_small.url for i in self.image_set.all()]
+    def small_image(self):
+        return  self.image_set.first().image_small.url
     
     @property
     def medium_images(self):
-        return [i.image_medium.url for i in self.image_set.all()]
+        lst = [ i.image_medium.url for i in self.image_set.all()[:4]]
+        while len(lst) < 4:
+            lst.append(None)
+        return lst
 
 
 class Image(models.Model):
@@ -75,12 +76,12 @@ class Image(models.Model):
     image_small = ImageSpecField(
         source='image',
         processors=[Resize(719, 791)],
-        format='JPEG',
+        format='JPEG',  
         options={'quality': 100}
     )
     image_medium = ImageSpecField(
         source='image',
-        processors=[Resize(774, 800)],
+        processors=[Resize(774,800)],
         format='JPEG',
         options={'quality': 100}
     )
