@@ -43,7 +43,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("kategoriya"))
     description = models.TextField(verbose_name=_("ta'rifi"))
-    xarakteristika = models.TextField(verbose_name=_("xarakteristikasi"))
+    characteristic = models.TextField(verbose_name=_("xarakteristikasi"),null=True)
     
     
     created_at = models.DateTimeField(auto_now_add=True)
