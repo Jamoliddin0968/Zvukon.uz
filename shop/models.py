@@ -8,8 +8,10 @@ from PIL import Image
 import PIL
 from imagekit.models import ImageSpecField
 from pilkit.processors import *
-from django.conf import settings
-def rename_product_image(instance, filename,upload_to = 'product-image'):
+
+
+def rename_product_image(instance, filename):
+    upload_to = 'product-image'
     ext = filename.split('.')[-1]
     if instance.pk:
         filename = 'temp{}.{}'.format(instance.pk, ext)

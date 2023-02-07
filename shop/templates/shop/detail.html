@@ -163,41 +163,43 @@
 
     <section class="pb-5">
       <div class="container">
-        <div class="row">
-          <!-- Item information-->
-          <div class="col-xl-10 mx-auto">
-            <ul class="nav nav-tabs tabs-fill justify-content-center border-0 flex-column flex-md-row" id="myTab" role="tablist">
-              <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation"><a class="nav-link text-small fw-bold py-3 border-0 active" id="description-tab" data-bs-toggle="tab"  role="tab" aria-controls="description" aria-selected="true">Description</a></li>
-              <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
-                <a aria-controls="info" aria-selected="false" class="nav-link text-small fw-bold py-3 border-0" data-bs-toggle="tab" href="detail.html#info" id="info-tab" role="tab">
-                    Additional info
-                </a>
-            </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                <div class="p-3 p-md-5">
-                  <p class="text-muted mb-4">
-                    {{object.description}}
-                  </p>
-                  
-                 </div>
-              </div>
-              <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
-                <div class="p-3 p-md-5">
-                  <p class="text-muted mb-4">
-                    {{object.characteristic}}
-                  </p>
-                  
-                 </div>
-              </div>
-            </div>
+          <div class="row">
+              <!-- Item information-->
+              <div class="col-xl-10 mx-auto">
+                  <ul class="nav nav-tabs tabs-fill justify-content-center border-0 flex-column flex-md-row" id="myTab" role="tablist">
+                      <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+                          <a aria-controls="description" aria-selected="true" class="nav-link text-small fw-bold py-3 border-0 active" data-bs-toggle="tab" href="detail.html#description" id="description-tab" role="tab">
+                              Description
+                          </a>
+                      </li>
+                      <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+                          <a aria-controls="info" aria-selected="false" class="nav-link text-small fw-bold py-3 border-0" data-bs-toggle="tab" href="detail.html#info" id="info-tab" role="tab">
+                              Additional info
+                          </a>
+                      </li>
 
-            
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                      <div aria-labelledby="description-tab" class="tab-pane fade show active" id="description" role="tabpanel">
+                          <div class="p-3 p-md-5">
+                              <p class="text-muted mb-4">
+                                  {{object.description}}
+                              </p>
+                          </div>
+                      </div>
+                      <!--add info -->
+                      <div aria-labelledby="info-tab" class="tab-pane fade" id="info" role="tabpanel">
+                          <div class="p-3 p-md-5">
+                              <p class="text-muted">
+                                 {{object.characteristic}}
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </section>
+  </section>
 
 
     <!-- Similar items-->
