@@ -51,9 +51,18 @@ def productDetail(request,pk):
 def categoryDetail(request,pk):
     cat = get_object_or_404(Category,pk=pk)
     new_products = cat.product_set.all().all().order_by("-id")
-    popular_products = Product.objects.all().order_by("id")
+    popular_products = Product.objects.exclude(category=cat.id).order_by("id")
+    cat_products = []
+    lst = []
+    for item in new_products:
+        if len(lst) < 9:
+            lst.append(item)
+        else:
+            cat_products.append(list(lst[:]))
+            lst.clear()
+    cat_products.append(list(lst[:]))
     context = {
          "new_products":new_products,
         "popular_products":popular_products
     }
-    return render(request,"shop/index.html")
+    return render(request,"shop/index.html",context)
