@@ -7,7 +7,7 @@ from django.contrib.auth.models import Group
 admin.site.unregister(Group)
 class ImageInline(admin.StackedInline):
     model = Image
-    extra = 1
+    min_num = 1
     max_num = 4
     
 @admin.register(Category)
