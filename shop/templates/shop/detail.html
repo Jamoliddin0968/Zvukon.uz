@@ -72,7 +72,7 @@
                      {% if img %}
                         <div class="swiper-slide"><img class="img-fluid" src="{{img}}" alt=".."></div> 
                       {% else %}
-                      <div ><img class="img-fluid" src="{% static 'img/white.png' %}"></div> 
+                      <div><p class="img-fluid" src="{% static 'img/white.png' %}"><p></div> 
                      {% endif %}
                     {% endfor %}  
                   </div>
@@ -87,11 +87,7 @@
                     <div class="swiper-slide">
                       <a class="glightbox" href={{img}}>
                         <img class="img-fluid" src={{img}} alt=".."></a></div>
-                    {% else %}
-                    <div class="swiper-slide">
-                      <p class="glightbox">
-                        <img class="img-fluid">
-                      </p></div>
+                    
                     {% endif %}
                     
                     {% endfor %}
@@ -220,7 +216,7 @@
                 <div class="swiper-slide pb-5">
                   <div class="product mb-4"><span class="badge rounded-0 bg-danger">Soldout</span><a href="{% url 'productDetail' product.pk %}"><img
                         class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera"></a>
-                  </div>
+
                   <h6 class="text-center"><a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{ product.name }}</a></h6>
                   <p class="text-center text-muted font-weight-bold">{{ product.price }}</p>
                 </div>
