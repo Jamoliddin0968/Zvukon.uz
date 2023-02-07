@@ -10,6 +10,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
+ 
   <!-- Google fonts-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&amp;display=swap">
   <!-- Swiper slider-->
@@ -112,7 +113,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
           {% if phone %}
-          <p class="lead mb-1 text-white"><a class="reset-anchor" href="tel:+1 123 456 789">{{phone}}</a></p>
+          <p class="lead mb-1 text-white"><a class="reset-anchor" href="{{phone}}">{{phone}}</a></p>
           {% endif %}
           <ul class="list-inline mb-0">
             {% if telegram %}
@@ -167,6 +168,8 @@
 
 
   </script>
+  <!-- MDB -->
+
   <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
