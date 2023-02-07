@@ -62,7 +62,7 @@ def categoryDetail(request,pk):
             lst.clear()
     cat_products.append(list(lst[:]))
     context = {
-         "new_products":new_products,
+         "cat_products":cat_products,
         "popular_products":popular_products
     }
-    return render(request,"shop/index.html",context)
+    return render(request,"shop/cat.html",context)
