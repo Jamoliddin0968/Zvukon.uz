@@ -72,7 +72,7 @@
                      {% if img %}
                         <div class="swiper-slide"><img class="img-fluid" src="{{img}}" alt=".."></div> 
                       {% else %}
-                      <div><p class="img-fluid" src="{% static 'img/white.png' %}"><p></div> 
+                      <p class="swiper-slide"><img class="img-fluid" src="{% static 'img/white.png' %}"></p> 
                      {% endif %}
                     {% endfor %}  
                   </div>
@@ -209,31 +209,44 @@
               <h2>You may also like</h2>
               <p class="text-muted">Related products</p>
             </header>
+
             <div class="swiper-container" id="similarItemsSlider">
+
               <div class="swiper-wrapper">
                 <!-- Product-->
                 {% for product in popular_products %}
                 <div class="swiper-slide pb-5">
-                  <div class="product mb-4"><span class="badge rounded-0 bg-danger">Soldout</span><a href="{% url 'productDetail' product.pk %}"><img
-                        class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera"></a>
-
-                  <h6 class="text-center"><a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{ product.name }}</a></h6>
+                  <div class="product mb-4">
+                    <span class="badge rounded-0 bg-danger">Soldout</span>
+                    <a href="{% url 'productDetail' product.pk %}">
+                      <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
+                    </a>
+                  </div>
+                  <h6 class="text-center">
+                    <a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{ product.name }}
+                    </a>
+                  </h6>
                   <p class="text-center text-muted font-weight-bold">{{ product.price }}</p>
                 </div>
                 {% endfor %}
               </div>
               <div class="swiper-button-prev px-3 py-2">
                 <svg class="svg-icon svg-icon-md">
-                  <use xlink:href="#arrow-left-1"> </use>
-                </svg>Prev
-              </div>
-              <div class="swiper-button-next px-3 py-2">
-                           Next
-                <svg class="svg-icon svg-icon-md">
-                  <use xlink:href="#arrow-right-1"> </use>
+                    <use xlink:href="#arrow-left-1">
+                    </use>
                 </svg>
-              </div>
+                Prev
             </div>
+            <div class="swiper-button-next px-3 py-2">
+                Next
+                <svg class="svg-icon svg-icon-md">
+                    <use xlink:href="#arrow-right-1">
+                    </use>
+                </svg>
+            </div>
+
+            </div>
+
           </div>
         </div>
       </div>
