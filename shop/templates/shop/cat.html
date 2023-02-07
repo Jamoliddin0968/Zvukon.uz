@@ -64,16 +64,6 @@
             <span class="badge rounded-0 bg-primary">New</span>
             <a href="{% url 'productDetail' product.pk %}"><img class="img-fluid" src={{ product.small_image}}
                 alt="Round grey hanging decor"></a>
-            <div class="cta shadow d-inline-block"><a class="product-btn">
-                <i class="fas fa-heart"></i>
-              </a>
-              <a class="product-btn" href="{% url 'productDetail' product.pk %}" data-bs-toggle="modal"><i
-                  class="fas fa-expand"></i>
-              </a>
-              <a class="product-btn" href="cart.html"><i class="fas fa-dolly-flatbed">
-                </i>
-              </a>
-            </div>
           </div>
           <h6 class="text-center"><a class="reset-anchor"
               href="{% url 'productDetail' product.pk %}">{{product.name}}</a></h6>
