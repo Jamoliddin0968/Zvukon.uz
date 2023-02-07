@@ -4,6 +4,7 @@ from modeltranslation.admin import TranslationAdmin
 
 from django.contrib.auth.models import Group
 
+admin.site.unregister(Group)
 class ImageInline(admin.StackedInline):
     model = Image
     extra = 1
@@ -29,6 +30,17 @@ class ProductAdmin(TranslationAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
+    
     list_display = ['image','product']
     list_per_page = 10
+    
+    def has_add_permission(self, request):
+        return False
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     
