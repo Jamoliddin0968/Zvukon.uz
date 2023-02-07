@@ -1,9 +1,9 @@
-
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
     <!--  Modal -->
 {% block content %}
-    <div class="modal fade" id="productView" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <!-- <div class="modal fade" id="productView" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content rounded-0 border-0">
           <div class="modal-body p-0 overflow-hidden shadow">
@@ -47,13 +47,13 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Breadcrumb-->
     <div class="bg-light py-2">
       <div class="container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0 bg-light">
-            <li class="breadcrumb-item"><a class="reset-anchor" href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a class="reset-anchor" href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{object.name}}</li>
           </ol>
         </nav>
@@ -98,7 +98,7 @@
           </div>
           <!-- Item info-->
           <div class="col-lg-6">
-            <div class="badge bg-info small rounded-0 mb-2">Trending</div>
+            <div class="badge bg-info small rounded-0 mb-2">{% trans "Trenddagi" %}</div>
             <h1>{{object.name}}</h1>
             <div class="d-flex align-items-center">
             </div>
@@ -144,15 +144,15 @@
 
 
             <ul class="list-unstyled small d-inline-block">
-              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">Category:</strong><a class="reset-anchor ms-2">{{object.category.name}}</a></li>
+              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{%  trans "Kategoriya" %}:</strong><a class="reset-anchor ms-2">{{object.category.name}}</a></li>
               {% if phone %}
-              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">Telefon:</strong><a class="reset-anchor ms-2">{{phone}}</a></li>
+              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{% trans "Telefon raqam" %}:</strong><a class="reset-anchor ms-2">{{phone}}</a></li>
               {% endif %}
               {%if telegram %}
-              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">Telegram:</strong><a class="reset-anchor ms-2">{{telegram}}</a></li>
+              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{% trans "Telegram" %}:</strong><a class="reset-anchor ms-2">{{telegram}}</a></li>
               {% endif %}
               {% if instagram %}
-              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">Instagram:</strong><a class="reset-anchor ms-2">{{instagram}}</a></li>
+              <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{% trans "Instagram" %}:</strong><a class="reset-anchor ms-2">{{instagram}}</a></li>
               {% endif %}
             </ul>
           </div>
@@ -169,12 +169,12 @@
                   <ul class="nav nav-tabs tabs-fill justify-content-center border-0 flex-column flex-md-row" id="myTab" role="tablist">
                       <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
                           <a aria-controls="description" aria-selected="true" class="nav-link text-small fw-bold py-3 border-0 active" data-bs-toggle="tab" href="detail.html#description" id="description-tab" role="tab">
-                              Description
+                              {% trans "Tavsif" %}
                           </a>
                       </li>
                       <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
                           <a aria-controls="info" aria-selected="false" class="nav-link text-small fw-bold py-3 border-0" data-bs-toggle="tab" href="detail.html#info" id="info-tab" role="tab">
-                              Additional info
+                              {% trans "Qo'shimcha ma'lumot" %}
                           </a>
                       </li>
 
@@ -208,8 +208,8 @@
         <div class="row">
           <div class="col-xl-10 mx-auto">
             <header class="text-center mb-5">
-              <h2>You may also like</h2>
-              <p class="text-muted">Related products</p>
+              <h2>{% trans "Sizga ham yoqishi mumkin" %}</h2>
+              <p class="text-muted">{% trans "Tegishli mahsulotlar" %}</p>
             </header>
 
             <div class="swiper-container" id="similarItemsSlider">
@@ -219,7 +219,7 @@
                 {% for product in popular_products %}
                 <div class="swiper-slide pb-5">
                   <div class="product mb-4">
-                    <span class="badge rounded-0 bg-danger">Soldout</span>
+                    <span class="badge rounded-0 bg-danger">{% trans "Sotildi" %}</span>
                     <a href="{% url 'productDetail' product.pk %}">
                       <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
                     </a>
@@ -237,10 +237,10 @@
                     <use xlink:href="#arrow-left-1">
                     </use>
                 </svg>
-                Prev
+                {% trans "Oldingi" %}
             </div>
             <div class="swiper-button-next px-3 py-2">
-                Next
+              {% trans "Keyingi" %}
                 <svg class="svg-icon svg-icon-md">
                     <use xlink:href="#arrow-right-1">
                     </use>

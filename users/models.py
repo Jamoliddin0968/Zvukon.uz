@@ -127,3 +127,8 @@ class Account(models.Model):
     
     name = models.CharField(_("Ijtimoiy tarmoq"),max_length=15,choices=SOCIAL)
     link = models.CharField(_("link"),max_length=255)
+    
+    class Meta:
+        verbose_name = _("Tarmoq")
+        verbose_name_plural = _("Tarmoqlar")
+        

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 18:06+0500\n"
+"POT-Creation-Date: 2023-02-08 01:04+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,105 +20,169 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\config\settings.py:129
+#: .\config\settings.py:140 .\templates\base.html:70
 msgid "Uzbek"
-msgstr "узбекский"
+msgstr ""
 
-#: .\config\settings.py:130
+#: .\config\settings.py:141
 msgid "Russian"
-msgstr "Русский"
-
-#: .\config\settings.py:185
-msgid "Zvukon.uz ga xush kelibsiz"
-msgstr "Добро пожаловать на Zvukon.uz"
-
-#: .\config\settings.py:205 .\templates\base.html:48 .\templates\base.html:52
-msgid "Bosh sahifa"
-msgstr "Домашняя страница"
+msgstr ""
 
 #: .\shop\apps.py:7
 msgid "Kategoriyalar va Maxsulotlar"
 msgstr "Категории и продукты"
 
-#: .\shop\models.py:21
+#: .\shop\models.py:26
 msgid "Kategoriya nomi"
 msgstr "Название категории"
 
-#: .\shop\models.py:22
+#: .\shop\models.py:28
 msgid "Kategoriya tarifi"
 msgstr "Категория тарифа"
 
-#: .\shop\models.py:29
+#: .\shop\models.py:29 .\shop\models.py:97
+msgid "Rasm"
+msgstr "Картина"
+
+#: .\shop\models.py:38 .\shop\models.py:46
+#: .\shop\templates\shop\detail.html:149
 msgid "Kategoriya"
 msgstr "Категория"
 
-#: .\shop\models.py:30 .\templates\base.html:50
+#: .\shop\models.py:39
 msgid "Kategoriyalar"
 msgstr "Категории"
 
-#: .\shop\models.py:33 .\shop\models.py:53
-msgid "rangi"
-msgstr "цвет"
-
-#: .\shop\models.py:42
-msgid "Rang"
-msgstr "Цвет"
-
 #: .\shop\models.py:43
-msgid "Ranglar"
-msgstr "Цвета"
+msgid "nomi"
+msgstr "имя"
+
+#: .\shop\models.py:44
+msgid "narxi"
+msgstr "расходы"
 
 #: .\shop\models.py:47
-msgid "nomi"
-msgstr "название"
-
-#: .\shop\models.py:48
-msgid "narxi"
-msgstr "Цена"
-
-#: .\shop\models.py:49
-msgid "soni"
-msgstr "подсчет"
-
-#: .\shop\models.py:50
-msgid "kategoriya"
-msgstr "Категория"
-
-#: .\shop\models.py:51
-msgid "Aktivmi"
-msgstr "он активен?"
-
-#: .\shop\models.py:52
-msgid "ta'rifi"
+msgid "Ta'rifi"
 msgstr "определение"
 
-#: .\shop\models.py:63 .\shop\models.py:68
+#: .\shop\models.py:48
+
+msgid "Xarakteristikasi"
+msgstr "Характеристика"
+
+#: .\shop\models.py:58 .\shop\models.py:76
 msgid "Maxsulot"
 msgstr "Продукт"
 
-#: .\shop\models.py:64
+#: .\shop\models.py:59
 msgid "Maxsulotlar"
 msgstr "Продукты"
 
-#: .\shop\models.py:67
+#: .\shop\models.py:74
 msgid "rasm"
 msgstr "картина"
 
-#: .\shop\models.py:75
-msgid "Rasm"
-msgstr "картина"
-
-#: .\shop\models.py:76
+#: .\shop\models.py:98
 msgid "Rasmlar"
-msgstr "картинки"
+msgstr "Картинки"
+
+#: .\shop\templates\shop\detail.html:56 .\templates\base.html:46
+#: .\templates\base.html:110
+msgid "Bosh sahifa"
+msgstr "Домашняя страница"
+
+#: .\shop\templates\shop\detail.html:101
+msgid "Trenddagi"
+msgstr "В тренде"
+
+#: .\shop\templates\shop\detail.html:151 .\users\models.py:80
+msgid "Telefon raqam"
+msgstr "Номер телефона"
+
+#: .\shop\templates\shop\detail.html:154 .\templates\base.html:84
+msgid "Telegram"
+msgstr "Телеграмма"
+
+#: .\shop\templates\shop\detail.html:157
+msgid "Instagram"
+msgstr "Инстаграм"
+
+#: .\shop\templates\shop\detail.html:174
+msgid "Tavsif"
+msgstr "Описание"
+
+#: .\shop\templates\shop\detail.html:179
+msgid "Qo'shimcha ma'lumot"
+msgstr "Дополнительная информация"
+
+#: .\shop\templates\shop\detail.html:213
+msgid "Sizga ham yoqishi mumkin"
+msgstr "Вам также может понравиться"
+
+#: .\shop\templates\shop\detail.html:214
+msgid "Tegishli mahsulotlar"
+msgstr "Сопутствующие товары"
+
+#: .\shop\templates\shop\detail.html:224 .\shop\templates\shop\index.html:114
+msgid "Sotildi"
+msgstr "Распроданный"
+
+#: .\shop\templates\shop\detail.html:242 .\shop\templates\shop\index.html:79
+#: .\shop\templates\shop\index.html:129
+msgid "Oldingi"
+msgstr "Предыдущий"
+
+#: .\shop\templates\shop\detail.html:245 .\shop\templates\shop\index.html:82
+#: .\shop\templates\shop\index.html:132
+msgid "Keyingi"
+msgstr "Следующий"
+
+#: .\shop\templates\shop\index.html:56
+msgid "Yangi mahsulotlar"
+msgstr "Новые продукты"
+
+#: .\shop\templates\shop\index.html:57
+msgid "Eng yangi mahsulotlarni ko'ring"
+msgstr "Смотрите новейшие продукты"
+
+#: .\shop\templates\shop\index.html:64
+msgid "Yangi"
+msgstr "новый"
+
+#: .\shop\templates\shop\index.html:95
+msgid "Yangi soatlar to'plami"
+msgstr "Новая коллекция часов"
+
+#: .\shop\templates\shop\index.html:96
+msgid ""
+"Mutaxassislarning ta'kidlashicha, hamma narsa birinchi xaridni amalga "
+"oshirishdan oldin sodir bo'lishi kerak."
+msgstr ""
+"Эксперты говорят, что все должно произойти до совершения первой покупки."
+
+#: .\shop\templates\shop\index.html:96
+msgid "Hoziroq xarid qiling"
+msgstr "Купить сейчас"
+
+#: .\shop\templates\shop\index.html:105
+msgid "Tanlangan mahsulotlar"
+msgstr "Выбранные продукты"
+
+#: .\shop\templates\shop\index.html:106
+msgid "Eng yangi mahsulotlarni ko'rib chiqing"
+msgstr "Ознакомьтесь с новейшими продуктами"
+
+#: .\templates\base.html:75
+msgid "Rus"
+msgstr ""
+
+#: .\templates\base.html:126
+msgid "Biz bilan bog'lanish"
+msgstr "связаться с нами"
 
 #: .\users\apps.py:8 .\users\models.py:116
 msgid "Foydalanuvchilar"
 msgstr "Пользователи"
-
-#: .\users\models.py:80
-msgid "Telefon raqam"
-msgstr "Номер телефона"
 
 #: .\users\models.py:81
 msgid "Bu raqam bo'yicha foydalanuvchi mavjud"
@@ -134,27 +198,26 @@ msgstr "Изображение профиля"
 
 #: .\users\models.py:86
 msgid "first name"
-msgstr "Имя"
+msgstr ""
 
 #: .\users\models.py:90
+
 msgid "staff status"
-msgstr "Статус персонала"
+msgstr "Ishchi statusi"
 
 #: .\users\models.py:93
 msgid "Designates whether the user can log into this admin site."
-msgstr "Определяет, может ли пользователь войти на этот сайт администратора."
+msgstr ""
 
 #: .\users\models.py:96
 msgid "active"
-msgstr "Активный"
+msgstr "активный"
 
 #: .\users\models.py:99
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
-"Указывает, следует ли считать этого пользователя активным. Отменить выбор "
-"этого вместо удаления учетных записей."
 
 #: .\users\models.py:104
 msgid "date joined"
@@ -162,13 +225,28 @@ msgstr "Дата присоединения"
 
 #: .\users\models.py:115
 msgid "Foydalanuvchi"
-msgstr "Пользователь"
+msgstr "Пользователи"
 
-#~ msgid "rang ko'di"
-#~ msgstr "цветовой код"
+#: .\users\models.py:128
+msgid "Ijtimoiy tarmoq"
+msgstr "Социальная сеть"
 
-#~ msgid "O'lchami"
-#~ msgstr "Размер"
+#: .\users\models.py:129
+msgid "link"
+msgstr "связь"
 
-#~ msgid "teglari"
-#~ msgstr "теги"
+#: .\users\models.py:132
+msgid "Tarmoq"
+msgstr "Социальная сеть"
+
+#: .\users\models.py:133
+msgid "Tarmoqlar"
+msgstr "Социальные сети"
+
+#~ msgid "Ism"
+#~ msgstr "Имя"
+
+#~ msgid ""
+#~ "Foydalanuvchi ushbu administrator saytiga kirishi mumkinligini aniqlaydi."
+#~ msgstr ""
+#~ "Определяет, может ли пользователь войти на этот сайт администратора."

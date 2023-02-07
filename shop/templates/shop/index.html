@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 
 {% block content %}
@@ -52,15 +53,15 @@
 <section class="py-5">
   <div class="container py-5">
     <header class="mb-3 text-center">
-      <h2 class="mb-0">Yangi mahsulotlar</h2>
-      <p class="text-muted">Eng yangi mahsulotlarni ko'ring</p>
+      <h2 class="mb-0">{% trans "Yangi mahsulotlar" %}</h2>
+      <p class="text-muted">{% trans "Eng yangi mahsulotlarni ko'ring" %}</p>
     </header>
     <div class="swiper-container pt-5" id="newArrivals">
       <div class="swiper-wrapper">
         {% for product in new_products %}
         <div class="swiper-slide pb-5">
           <div class="product mb-4">
-            <span class="badge rounded-0 bg-primary">New</span>
+            <span class="badge rounded-0 bg-primary">{% trans "Yangi" %}</span>
             <a href="{% url 'productDetail' product.pk %}"><img class="img-fluid" src={{ product.small_image}}
                 alt="Round grey hanging decor"></a>
           </div>
@@ -75,10 +76,10 @@
       <div class="swiper-button-prev px-3 py-2">
         <svg class="svg-icon svg-icon-md">
           <use xlink:href="#arrow-left-1"> </use>
-        </svg>Prev
+        </svg>{% trans "Oldingi" %}
       </div>
       <div class="swiper-button-next px-3 py-2">
-        Next
+        {% trans "Keyingi" %}
         <svg class="svg-icon svg-icon-md">
           <use xlink:href="#arrow-right-1"> </use>
         </svg>
@@ -91,10 +92,8 @@
   <div class="container py-5">
     <div class="row">
       <div class="col-lg-6 ms-auto">
-        <h2 class="hero-heading">New watches collections</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.</p><a class="btn btn-primary"> <i class="fas fa-shopping-bag-mr-2"></i>Shop
-          now</a>
+        <h2 class="hero-heading">{% trans "Yangi soatlar to'plami" %}</h2>
+        <p class="text-muted">{% trans "Mutaxassislarning ta'kidlashicha, hamma narsa birinchi xaridni amalga oshirishdan oldin sodir bo'lishi kerak." %}</p><a class="btn btn-primary"> <i class="fas fa-shopping-bag-mr-2"></i>{% trans "Hoziroq xarid qiling" %}</a>
       </div>
     </div>
   </div>
@@ -103,8 +102,8 @@
 <section class="py-5">
   <div class="container py-5">
     <header class="mb-3 text-center">
-      <h2 class="mb-0">Featured products</h2>
-      <p class="text-muted">Browse the Newest Products</p>
+      <h2 class="mb-0">{% trans "Tanlangan mahsulotlar" %}</h2>
+      <p class="text-muted">{% trans "Eng yangi mahsulotlarni ko'rib chiqing" %}</p>
     </header>
     <div class="swiper-container pt-5" id="featuredProducts">
       <div class="swiper-wrapper">
@@ -112,7 +111,7 @@
         {% for product in popular_products %}
         <div class="swiper-slide pb-5">
           <div class="product mb-4">
-            <span class="badge rounded-0 bg-danger">Soldout</span>
+            <span class="badge rounded-0 bg-danger">{% trans "Sotildi" %}</span>
             <a href="{% url 'productDetail' product.pk %}">
               <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
             </a>
@@ -127,10 +126,10 @@
       <div class="swiper-button-prev px-3 py-2">
         <svg class="svg-icon svg-icon-md">
           <use xlink:href="#arrow-left-1"> </use>
-        </svg>Prev
+        </svg>{% trans "Oldingi" %}
       </div>
       <div class="swiper-button-next px-3 py-2">
-        Next
+        {% trans "Keyingi" %}
         <svg class="svg-icon svg-icon-md">
           <use xlink:href="#arrow-right-1"> </use>
         </svg>

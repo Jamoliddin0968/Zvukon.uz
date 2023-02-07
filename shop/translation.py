@@ -8,4 +8,4 @@ class CategoryTranslationOptions(TranslationOptions):
     
 @register(Product)
 class ColorTranslationOptions(TranslationOptions):
-    fields = ("name","description")
+    fields = ("name","description","characteristic")

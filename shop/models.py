@@ -26,7 +26,7 @@ class Category(models.Model):
         "Kategoriya nomi"), null=True, blank=True)
     description = models.TextField(verbose_name=_(
         "Kategoriya tarifi"), null=True, blank=True)
-    image = models.ImageField()
+    image = models.ImageField(upload_to="category-image",verbose_name=_("Rasm"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -43,9 +43,9 @@ class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("nomi"))
     price = models.FloatField(default=0, verbose_name=_("narxi"))
     category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("kategoriya"))
-    description = models.TextField(verbose_name=_("ta'rifi"))
-    characteristic = models.TextField(verbose_name=_("xarakteristikasi"),null=True)
+        Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
+    description = models.TextField(verbose_name=_("Ta'rifi"))
+    characteristic = models.TextField(verbose_name=_("Xarakteristikasi"),null=True)
     
     
     created_at = models.DateTimeField(auto_now_add=True)
