@@ -41,18 +41,18 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-3 mb-lg-100">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Bosh sahifa</a>
+            <a class="nav-link active" aria-current="page" href="#">{% trans "Bosh sahifa" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Category</a>
+            <a class="nav-link" href="#">{% trans "Kategoriyalar" %}</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Tilni tanlang
+              {% trans "Tilni tanlang" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#"><img src="{% static 'img/uz.png' %}" alt="" style="width: 22px; height: 20px;">  Uz</a></li>
-              <li><a class="dropdown-item" href="#"><img src="{% static 'img/ru.png' %}" alt="" style="width: 22px; height: 20px;">  Ru</a></li>
+              <li><a class="dropdown-item" href="/uz{{request.get_full_path|slice:'3:'}}"><img src="{% static 'img/uz.png' %}" alt="" style="width: 22px; height: 20px;">  Uz</a></li>
+              <li><a class="dropdown-item" href="/ru{{request.get_full_path|slice:'3:'}}"><img src="{% static 'img/ru.png' %}" alt="" style="width: 22px; height: 20px;">  Ru</a></li>
             </ul>
 
           </li>
@@ -64,7 +64,7 @@
                       </svg>{% trans "Telegram" %}</a>
             </li>
             <li>
-                <a class="nav-link">
+                <a href="tel:+998901605923" class="nav-link">
                     <i class="fa fa-phone">
                     </i>
                    {{phone}}
