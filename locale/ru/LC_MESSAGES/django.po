@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-08 01:04+0500\n"
+"POT-Creation-Date: 2023-02-09 16:34+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\config\settings.py:140 .\templates\base.html:70
+#: .\config\settings.py:140
 msgid "Uzbek"
 msgstr ""
 
@@ -49,7 +49,7 @@ msgstr "Картина"
 msgid "Kategoriya"
 msgstr "Категория"
 
-#: .\shop\models.py:39
+#: .\shop\models.py:39 .\templates\base.html:47
 msgid "Kategoriyalar"
 msgstr "Категории"
 
@@ -66,7 +66,6 @@ msgid "Ta'rifi"
 msgstr "определение"
 
 #: .\shop\models.py:48
-
 msgid "Xarakteristikasi"
 msgstr "Характеристика"
 
@@ -86,8 +85,8 @@ msgstr "картина"
 msgid "Rasmlar"
 msgstr "Картинки"
 
-#: .\shop\templates\shop\detail.html:56 .\templates\base.html:46
-#: .\templates\base.html:110
+#: .\shop\templates\shop\detail.html:56 .\templates\base.html:44
+#: .\templates\base.html:89
 msgid "Bosh sahifa"
 msgstr "Домашняя страница"
 
@@ -99,7 +98,7 @@ msgstr "В тренде"
 msgid "Telefon raqam"
 msgstr "Номер телефона"
 
-#: .\shop\templates\shop\detail.html:154 .\templates\base.html:84
+#: .\shop\templates\shop\detail.html:154 .\templates\base.html:64
 msgid "Telegram"
 msgstr "Телеграмма"
 
@@ -172,11 +171,11 @@ msgstr "Выбранные продукты"
 msgid "Eng yangi mahsulotlarni ko'rib chiqing"
 msgstr "Ознакомьтесь с новейшими продуктами"
 
-#: .\templates\base.html:75
-msgid "Rus"
-msgstr ""
+#: .\templates\base.html:51
+msgid "Tilni tanlang"
+msgstr "Выберите язык"
 
-#: .\templates\base.html:126
+#: .\templates\base.html:105
 msgid "Biz bilan bog'lanish"
 msgstr "связаться с нами"
 
@@ -201,7 +200,6 @@ msgid "first name"
 msgstr ""
 
 #: .\users\models.py:90
-
 msgid "staff status"
 msgstr "Ishchi statusi"
 
