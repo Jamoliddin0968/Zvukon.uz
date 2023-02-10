@@ -3,6 +3,19 @@
 {% load static %}
 
 {% block content %}
+<style>
+  .min-50{
+    width: calc(100% - 50%);
+    position: absolute;
+    left: 0;
+  }
+  
+  .carousel-caption {
+      bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+  }
+</style>
 <div class="modal fade" id="productView" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content rounded-0 border-0">
@@ -39,7 +52,7 @@
     </div>
     <div class="carousel-item">
       <img src="{% static 'img/bg-banner-2.d0671937.jpg' %}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption">
         <h3>Second slide label</h3>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
@@ -47,8 +60,10 @@
     <div class="carousel-item">
       <img src="{% static 'img/bg-banner.f561f8e8.jpg' %}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
+        <div class="min-50">
         <h3>Third slide label</h3>
         <p>Some representative placeholder content for the third slide.</p>
+        </div>
       </div>
     </div>
   </div>

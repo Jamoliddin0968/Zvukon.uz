@@ -67,3 +67,6 @@ def categoryDetail(request,pk):
         "cat_name":cat.name,
     }
     return render(request,"shop/cat.html",context)
+
+def test(request):
+    return render(request,"home.html")
