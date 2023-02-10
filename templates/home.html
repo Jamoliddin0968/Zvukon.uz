@@ -28,7 +28,14 @@
     <body>
 
 
-
+<style>
+    .footer-area-bg-image {
+        background-image: url({% static '/img/banner.png' %});
+        background-position: bottom left;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+</style>
         <!-- Start Main Banner Area -->
         <div class="home-slides owl-carousel owl-theme">
             <div class="single-banner-item banner-bg1 jarallax" data-jarallax='{"speed": 0.3}'>
@@ -82,32 +89,30 @@
                     </div>
                 </div>
             </div>
-
-            <div class="single-banner-item banner-bg3 jarallax" data-jarallax='{"speed": 0.3}'>
+            {% for cat in cats %}
+            <div class="single-banner-item banner-bg3 jarallax" data-jarallax='{"speed": 0.3}' style="background: url({% static 'img/banner.jpg' %});">
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-lg-5 col-md-12">
                             <div class="main-banner-content">
-                                <span class="sub-title">Enjoy The Game</span>
+                                <span class="sub-title">{{cat.name}}</span>
                                 <div class="logo">
                                     <img src="{% static 'home/img/zelda.png ' %}" alt="image">
                                 </div>
                                 <h6>Available Now</h6>
-                                <div class="btn-box">
-                                    <a href="index-2.html#" class="default-btn">Purchase Now</a>
-                                    <a href="contact.html" class="optional-btn">Free Trial</a>
-                                </div>
                             </div>
                         </div>
 
                         <div class="col-lg-7 col-md-12">
                             <div class="main-banner-image">
-                                <img src="{% static 'home/img/banner-img3.png ' %}" alt="image">
+                                <img src={{cat.image.url}} alt="image">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
+            
         </div>
         <!-- End Main Banner Area -->
 
