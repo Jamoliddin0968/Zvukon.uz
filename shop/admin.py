@@ -40,7 +40,7 @@ class ImageAdmin(admin.ModelAdmin):
         return False
 
     # This will help you to disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
     

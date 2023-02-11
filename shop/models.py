@@ -84,7 +84,7 @@ class Image(models.Model):
     image_small = ImageSpecField(
         source='image',
         processors=[Resize(719, 791)],
-        format='JPEG',  
+        format='PNG',  
         options={'quality': 100}
     )
     image_medium = ImageSpecField(
