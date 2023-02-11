@@ -30,6 +30,12 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    image_fon = ImageSpecField(
+        source='image',
+        processors=[Resize(950, 700)],
+        format='PNG',  
+        options={'quality': 100}
+    )
     def __str__(self) -> str:
         return self.name
 

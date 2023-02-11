@@ -71,12 +71,13 @@ Default CSS
   --fontFamily3: 'Poppins', sans-serif;
   --mainColor: #fc0820;
   --whiteColor: #ffffff;
-  --blackColor: #0c0305;
+  --blackColor: #000000;
   --fontSize: 18px;
   --transition: .5s;
 }
 
-body {
+
+#carouselExampleCaptions{
   background-color: var(--blackColor);
   color: var(--whiteColor);
   padding: 0;
@@ -85,7 +86,6 @@ body {
   font-family: var(--fontFamily);
   font-size: var(--fontSize);
 }
-
 a {
   color: var(--whiteColor);
   -webkit-transition: var(--transition);

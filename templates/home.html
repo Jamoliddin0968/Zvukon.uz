@@ -1,133 +1,87 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="zxx">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Links of CSS files -->
-        <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/animate.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/boxicons.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/meanmenu.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/flaticon.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/fancybox.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/owl.theme.default.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/magnific-popup.min.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/style.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/responsive.css '%}">
-        <link rel="stylesheet" href="{% static 'home/css/dark-style.css '%}">
-
-        <title>my</title>
-
-        {% comment %} <link rel="icon" type="image/png ' %}" href="{% static 'home/img/favicon.png ' %}"> {% endcomment %}
-    </head>
-
-    <body>
-
-
-        <!-- Start Main Banner Area -->
-        <div class="home-slides owl-carousel owl-theme" style="color:black">
-            <div class="single-banner-item banner-bg1 jarallax" data-jarallax='{"speed": 0.3}'>
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-12">
-                            <div class="main-banner-content">
-                                <span class="sub-title">Enjoy The Game</span>
-                                <div class="logo">
-                                    <img src="{% static 'home/img/zelda.png ' %}" alt="image">
-                                </div>
-                                <h6>Available Now</h6>
-                                {% comment %} <div class="btn-box">
-                                    <a href="index-2.html#" class="default-btn">Purchase Now</a>
-                                    <a href="contact.html" class="optional-btn">Free Trial</a>
-                                </div> {% endcomment %}
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-md-12">
-                            <div class="main-banner-image">
-                                <img src="{% static 'home/img/banner-img1.png ' %}" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="single-banner-item banner-bg2 jarallax" data-jarallax='{"speed": 0.3}'>
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-12">
-                            <div class="main-banner-content">
-                                <span class="sub-title">Enjoy The Game</span>
-                                <div class="logo">
-                                    <img src="{% static 'home/img/zelda.png ' %}" alt="image">
-                                </div>
-                                <h6>Available Now</h6>
-                                <div class="btn-box">
-                                    <a href="index-2.html#" class="default-btn">Purchase Now</a>
-                                    <a href="contact.html" class="optional-btn">Free Trial</a>
+<section>
+    <link href="{% static 'home/css/bootstrap.min.css '%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'home/css/animate.min.css '%}">
+        <link href="{% static 'home/css/owl.carousel.min.css '%}" rel="stylesheet">
+            <link href="{% static 'home/css/owl.theme.default.min.css '%}" rel="stylesheet">
+                <link href="{% static 'home/css/style.css '%}" rel="stylesheet">
+                    <link href="{% static 'home/css/responsive.css '%}" rel="stylesheet">
+                        <!-- Start Main Banner Area -->
+                        <div class="home-slides owl-carousel owl-theme">
+                            {% for cat in cats %}
+                            <div class="single-banner-item banner-bg2 jarallax" data-jarallax='{"speed": 0.3}'>
+                                <div class="container-fluid">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-5 col-md-12">
+                                            <div class="main-banner-content">
+                                                <center>
+                                                    <h1 class="title">
+                                                        {{cat.name}}
+                                                    </h1>
+                                                </center>
+                                                <p>
+                                                    {{cat.description}}
+                                                </p>
+                                                {% comment %}
+                                                <h6>
+                                                    Available Now
+                                                </h6>
+                                                <div class="btn-box">
+                                                    <a class="default-btn" href="index-2.html#">
+                                                        Purchase Now
+                                                    </a>
+                                                    <a class="optional-btn" href="contact.html">
+                                                        Free Trial
+                                                    </a>
+                                                </div>
+                                                {% endcomment %}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7 col-md-12">
+                                            <div class="main-banner-image">
+                                                <img alt="image" src="{{cat.image_fon.url}}">
+                                                </img>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-
-                        <div class="col-lg-7 col-md-12">
-                            <div class="main-banner-image">
-                                <img src="{% static 'home/img/banner-img2.png ' %}" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% for cat in cats %}
-            <div class="single-banner-item banner-bg3 jarallax" data-jarallax='{"speed": 0.3}'>
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-md-12">
-                            <div class="main-banner-content">
-                                <span class="sub-title">{{cat.name}}</span>
-                                <div class="logo">
-                                    <img src="{% static 'home/img/zelda.png ' %}" alt="image">
-                                </div>
-                                <h6>Available Now</h6>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-md-12">
-                            <div class="main-banner-image">
-                                <img src={{cat.image.url}} alt="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            
-        </div>
-        <!-- End Main Banner Area -->
-
-
-
-
-
-
-       
-        <script data-cfasync="false" src="{% static '5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
-        <script src="{% static 'home/js/jquery.min.js '%}"></script>
-        <script src="{% static 'home/js/bootstrap.bundle.min.js '%}"></script>
-        <script src="{% static 'home/js/owl.carousel.min.js '%}"></script>
-        <script src="{% static 'home/js/magnific-popup.min.js '%}"></script>
-        <script src="{% static 'home/js/parallax.min.js '%}"></script>
-        <script src="{% static 'home/js/meanmenu.min.js '%}"></script>
-        <script src="{% static 'home/js/isotope.pkgd.min.js '%}"></script>
-        <script src="{% static 'home/js/cursor.min.js '%}"></script>
-        <script src="{% static 'home/js/fancybox.min.js '%}"></script>
-        <script src="{% static 'home/js/wow.min.js '%}"></script>
-        <script src="{% static 'home/js/form-validator.min.js '%}"></script>
-        <script src="{% static 'home/js/contact-form-script.js '%}"></script>
-        <script src="{% static 'home/js/ajaxchimp.min.js '%}"></script>
-        <script src="{% static 'home/js/main.js '%}"></script>
-    </body>
-</html>
+                        <!-- End Main Banner Area -->
+                        <script data-cfasync="false" src="{% static '5c5dd728/cloudflare-static/email-decode.min.js' %}">
+                        </script>
+                        <script src="{% static 'home/js/jquery.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/bootstrap.bundle.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/owl.carousel.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/magnific-popup.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/parallax.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/meanmenu.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/isotope.pkgd.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/cursor.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/fancybox.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/wow.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/form-validator.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/contact-form-script.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/ajaxchimp.min.js '%}">
+                        </script>
+                        <script src="{% static 'home/js/main.js '%}">
+                        </script>
+                    </link>
+                </link>
+            </link>
+        </link>
+    </link>
+</section>
