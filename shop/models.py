@@ -19,11 +19,21 @@ def rename_product_image(instance, filename):
         filename = '{}.{}'.format(uuid4().hex, ext)
     return os.path.join(upload_to, filename)
 
-
+class SubCategory(models.Model):
+    name = models.CharField(max_length=255,null=True,blank=True,verbose_name=_("SubCategoriya nomi"))
+    image = models.ImageField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    
 class Category(models.Model):
 
     name = models.CharField(max_length=255, verbose_name=_(
         "Kategoriya nomi"), null=True, blank=True)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.SET_NULL,null=True,blank=True,verbose_name=_("SubKategoriya"))
     description = models.TextField(verbose_name=_(
         "Kategoriya tarifi"), null=True, blank=True)
     image = models.ImageField(upload_to="category-image",verbose_name=_("Rasm"))
@@ -43,6 +53,7 @@ class Category(models.Model):
         #db_table = "Kategoriya"
         verbose_name = _("Kategoriya")
         verbose_name_plural = _("Kategoriyalar")
+
 
 
 class Product(models.Model):
