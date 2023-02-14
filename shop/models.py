@@ -63,8 +63,8 @@ class SubCategory(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("nomi"))
     price = models.FloatField(default=0, verbose_name=_("narxi"))
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
+    subcategory = models.ForeignKey(
+        SubCategory, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
     description = models.TextField(verbose_name=_("Ta'rifi"))
     characteristic = models.TextField(verbose_name=_("Xarakteristikasi"),null=True)
     
