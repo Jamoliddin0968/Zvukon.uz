@@ -66,13 +66,17 @@
             <div class="row">
               <div class="col-md-2 order-2 order-md-1">
                 <!-- Slider thumbnails-->
-                <div class="swiper-container swiper-thumbnails" id="detailSliderThumb">   
+                <div class="p-1 pt-3 swiper-container swiper-thumbnails" id="detailSliderThumb">   
                   <div class="swiper-wrapper">
                      {% for img in object.medium_images %}
                      {% if img %}
-                        <div class="swiper-slide"><img class="img-fluid" src="{{img}}" alt=".."></div> 
+                        <div style="min-height: 90px; box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);" class="swiper-slide d-flex align-items-center justify-content-center">
+                          <img class="img-fluid" src="{{img}}" alt="..">
+                        </div> 
                       {% else %}
-                      <p class="swiper-slide"><img class="img-fluid" src="{% static 'img/white.png' %}"></p> 
+                      <p  class=" swiper-slide">
+                        <img class="img-fluid" src="{% static 'img/white.png' %}">
+                      </p> 
                      {% endif %}
                     {% endfor %}  
                   </div>
@@ -80,13 +84,15 @@
               </div>
               <div class="col-md-10 order-1 order-md-2 mb-4 mb-lg-0">
                 <!-- Item slider-->
-                <div class="swiper-container" id="detailSlider">   
-                  <div class="swiper-wrapper">
+                <div  class="swiper-container" id="detailSlider">   
+                  <div  class="swiper-wrapper">
                     {% for img in object.medium_images  %}
                     {% if img %}
-                    <div class="swiper-slide">
-                      <a class="glightbox" href={{img}}>
-                        <img class="img-fluid" src={{img}} alt=".."></a></div>
+                    <div  class="swiper-slide p-3">
+                      <a style="display: block; box-shadow: 0 0 4px rgba(0, 0, 0, 0.2)" class="glightbox" href={{img}}>
+                        <img class="img-fluid" src={{img}} alt="..">
+                      </a>
+                    </div>
                     
                     {% endif %}
                     
@@ -97,7 +103,7 @@
             </div>
           </div>
           <!-- Item info-->
-          <div class="col-lg-6">
+          <div class="about__text col-lg-6">
             <div class="badge bg-info small rounded-0 mb-2">{% trans "Trenddagi" %}</div>
             <h1>{{object.name}}</h1>
             <div class="d-flex align-items-center">
@@ -178,13 +184,13 @@
 
             <div class="swiper-container" id="similarItemsSlider">
 
-              <div class="swiper-wrapper">
+              <div class="swiper-wrapper p-3">
                 <!-- Product-->
                 {% for product in popular_products %}
                 <div class="swiper-slide pb-5">
                   <div class="product mb-4">
                     <span class="badge rounded-0 bg-danger">{% trans "Sotildi" %}</span>
-                    <a href="{% url 'productDetail' product.pk %}">
+                    <a  style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; display: block; padding: 20px 10px;" href="{% url 'productDetail' product.pk %}">
                       <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
                     </a>
                   </div>
