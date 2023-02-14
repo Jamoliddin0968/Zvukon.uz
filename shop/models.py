@@ -47,7 +47,7 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     name = models.CharField(max_length=255,null=True,blank=True,verbose_name=_("Subkategoriya nomi"))
-    image = models.ImageField(upload_to="subcategory-images",verbose_name=_("Rasmi"))
+    image = models.ImageField(upload_to="subcategory-images")
     category = models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,blank=True,verbose_name=_("Kategoriya"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -64,7 +64,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("nomi"))
     price = models.FloatField(default=0, verbose_name=_("narxi"))
     subcategory = models.ForeignKey(
-        SubCategory, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("SubKategoriya"))
+        SubCategory, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
     description = models.TextField(verbose_name=_("Ta'rifi"))
     characteristic = models.TextField(verbose_name=_("Xarakteristikasi"),null=True)
     

@@ -1,5 +1,5 @@
 from django.shortcuts import render , get_object_or_404
-from .models import Category , Product
+from .models import Category , Product,SubCategory
 from hitcount.utils import get_hitcount_model
 from urllib.parse import urlparse
 from django.conf import settings
@@ -51,29 +51,22 @@ def productDetail(request,pk):
 def categoryDetail(request,pk):
     cat = get_object_or_404(Category,pk=pk)
     subcats = cat.subcategory_set.all()
+    products=[i  for item in subcats for i in item.product_set.all()]
     context = {
         "subcats":subcats,
         "cat_name":cat.name,
+        "products":products
     }
     return render(request,"shop/cat.html",context)
 
 def subcategoryDetail(request,pk):
-    cat = get_object_or_404(Category,pk=pk)
-    new_products = cat.product_set.all().all().order_by("-id")
-    popular_products = Product.objects.exclude(category=cat.id).order_by("id")
-    cat_products = []
-    lst = []
-    for item in new_products:
-        if len(lst) < 9:
-            lst.append(item)
-        else:
-            cat_products.append(list(lst[:]))
-            lst.clear()
-    cat_products.append(list(lst[:]))
+    subcat = get_object_or_404(SubCategory,pk=pk)
+    subcats = subcat.cat.subcategory_set.all()
+    products = subcat.product_set.all()
     context = {
-         "cat_products":cat_products,
-        "popular_products":popular_products,
-        "cat_name":cat.name,
+        "subcats":subcats,
+        "cat_name":subcat.name,
+        "products":products
     }
     return render(request,"shop/cat.html",context)
 
