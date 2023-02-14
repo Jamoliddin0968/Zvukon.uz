@@ -40,11 +40,6 @@ class Category(models.Model):
         FileExtensionValidator(allowed_extensions=VIDEO_EXTENSIONS),
     ],null=True,blank=True)
     
-    # def clean(self):
-    #     super().clean()
-    #     video_content_type = self.video_file.content_type
-    #     if video_content_type.split('/')[0] != 'video':
-    #         raise ValidationError('File is not a video.')
         
     image_fon = ImageSpecField(
         source='image',
@@ -107,7 +102,7 @@ class Product(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(
-        upload_to=rename_product_image, verbose_name=_("rasm"), max_length=150)
+        upload_to=rename_product_image, verbose_name=_("rasm"), max_length=150,help_text=_("Tavsiya etiladiogan rasm o'lchani 719x791"))
     product = models.ForeignKey(
         'Product', on_delete=models.CASCADE, verbose_name=_("Maxsulot"))
 
