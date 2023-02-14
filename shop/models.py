@@ -20,8 +20,9 @@ def rename_product_image(instance, filename):
     return os.path.join(upload_to, filename)
 
 
+    
+    
 class Category(models.Model):
-
     name = models.CharField(max_length=255, verbose_name=_(
         "Kategoriya nomi"), null=True, blank=True)
     description = models.TextField(verbose_name=_(
@@ -45,25 +46,25 @@ class Category(models.Model):
         verbose_name_plural = _("Kategoriyalar")
 
 class SubCategory(models.Model):
-    name = models.CharField(max_length=255,null=True,blank=True,verbose_name=_("SubCategoriya nomi"))
-    image = models.ImageField()
+    name = models.CharField(max_length=255,null=True,blank=True,verbose_name=_("Subkategoriya nomi"))
+    image = models.ImageField(upload_to="subcategory-images")
     category = models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,blank=True,verbose_name=_("Kategoriya"))
-    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self) -> str:
-        return self.category.name + " " +self.name
+        return self.name
     
-    
-
+    class Meta:
+        verbose_name = _("SubKategoriya")
+        verbose_name_plural = _("SubKategoriyalar")
 
 
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("nomi"))
     price = models.FloatField(default=0, verbose_name=_("narxi"))
-    subcategory = models.ForeignKey(
-        SubCategory, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("subategoriya"))
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
     description = models.TextField(verbose_name=_("Ta'rifi"))
     characteristic = models.TextField(verbose_name=_("Xarakteristikasi"),null=True)
     
@@ -77,7 +78,6 @@ class Product(models.Model):
     class Meta:
         verbose_name = _("Maxsulot")
         verbose_name_plural = _("Maxsulotlar")
-        
     @property
     def small_image(self):
         return  self.image_set.first().image_small.url
