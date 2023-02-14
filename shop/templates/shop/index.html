@@ -48,7 +48,7 @@
 
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    <div style="border: 1px solid red; height: calc(100vh - 70px);" class="carousel-item active">
       <img src="{% static 'img/banner.jpg' %}" alt="Los Angeles" class="d-block w-100">
       <div class="carousel-caption d-none d-md-block">
         <h3>Image 3</h3>
@@ -94,7 +94,7 @@
         <div class="swiper-slide pb-5">
           <div class="product mb-4">
             <span class="badge rounded-0 bg-primary">{% trans "Yangi" %}</span>
-            <a href="{% url 'productDetail' product.pk %}"><img class="img-fluid" style="width: 100%; height: 100%;" src={{ product.small_image}}
+            <a style="display: block; padding: 20px 10px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="{% url 'productDetail' product.pk %}"><img class="img-fluid" style="width: 100%; height: 100%;" src={{ product.small_image}}
                 alt="Round grey hanging decor"></a>
           </div>
           <h6 class="text-center"><a class="reset-anchor"
@@ -144,7 +144,7 @@
         <div class="swiper-slide pb-5">
           <div class="product mb-4">
             <span class="badge rounded-0 bg-danger">{% trans "Sotildi" %}</span>
-            <a href="{% url 'productDetail' product.pk %}">
+            <a style="display: block; padding: 20px 10px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="{% url 'productDetail' product.pk %}">
               <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
             </a>
           </div>
