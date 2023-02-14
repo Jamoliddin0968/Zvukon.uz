@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product,Category,Image
+from .models import Product,Category,Image,SubCategory
 from modeltranslation.admin import TranslationAdmin
 
 from django.contrib.auth.models import Group
@@ -43,4 +43,11 @@ class ImageAdmin(admin.ModelAdmin):
     # def has_delete_permission(self, request, obj=None):
     #     return False
 
+    
+
+@admin.register(SubCategory)
+class SubCategoryAdmin(TranslationAdmin):
+    list_display = ['name','category','created_at','updated_at']
+    search_fields = ['name']
+    list_per_page = 10
     
