@@ -12,7 +12,7 @@ class ImageInline(admin.StackedInline):
     
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):
-    list_display = ['name','created_at','updated_at']
+    list_display = ['name',"video_file",'created_at','updated_at']
     search_fields = ['name']
     list_per_page = 10
         

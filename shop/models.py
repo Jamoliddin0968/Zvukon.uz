@@ -8,6 +8,11 @@ from PIL import Image
 import PIL
 from imagekit.models import ImageSpecField
 from pilkit.processors import *
+from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
+
+VIDEO_EXTENSIONS = ['mp4', '.avi', '.wmv', '.mov']
+MAX_VIDEO_SIZE = 104857600  # 100 MB
 
 
 def rename_product_image(instance, filename):
@@ -31,6 +36,16 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    video_file = models.FileField(upload_to='videos/', validators=[
+        FileExtensionValidator(allowed_extensions=VIDEO_EXTENSIONS),
+    ],null=True,blank=True)
+    
+    # def clean(self):
+    #     super().clean()
+    #     video_content_type = self.video_file.content_type
+    #     if video_content_type.split('/')[0] != 'video':
+    #         raise ValidationError('File is not a video.')
+        
     image_fon = ImageSpecField(
         source='image',
         processors=[Resize(950, 700)],
