@@ -50,6 +50,15 @@ def productDetail(request,pk):
 
 def categoryDetail(request,pk):
     cat = get_object_or_404(Category,pk=pk)
+    subcats = cat.subcategory_set.all()
+    context = {
+        "subcats":subcats,
+        "cat_name":cat.name,
+    }
+    return render(request,"shop/cat.html",context)
+
+def subcategoryDetail(request,pk):
+    cat = get_object_or_404(Category,pk=pk)
     new_products = cat.product_set.all().all().order_by("-id")
     popular_products = Product.objects.exclude(category=cat.id).order_by("id")
     cat_products = []

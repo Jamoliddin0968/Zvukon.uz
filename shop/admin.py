@@ -19,7 +19,7 @@ class CategoryAdmin(TranslationAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
-    list_display = ['name','price','category','created_at','updated_at']
+    list_display = ['name','price','subcategory','created_at','updated_at']
     # list_editable = ['price','count','is_active','color']
     # list_filter = ['is_active']
 

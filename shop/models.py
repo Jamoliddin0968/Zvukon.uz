@@ -19,21 +19,11 @@ def rename_product_image(instance, filename):
         filename = '{}.{}'.format(uuid4().hex, ext)
     return os.path.join(upload_to, filename)
 
-class SubCategory(models.Model):
-    name = models.CharField(max_length=255,null=True,blank=True,verbose_name=_("SubCategoriya nomi"))
-    image = models.ImageField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    def __str__(self) -> str:
-        return self.name
-    
-    
+
 class Category(models.Model):
 
     name = models.CharField(max_length=255, verbose_name=_(
         "Kategoriya nomi"), null=True, blank=True)
-    subcategory = models.ForeignKey(SubCategory,on_delete=models.SET_NULL,null=True,blank=True,verbose_name=_("SubKategoriya"))
     description = models.TextField(verbose_name=_(
         "Kategoriya tarifi"), null=True, blank=True)
     image = models.ImageField(upload_to="category-image",verbose_name=_("Rasm"))
@@ -54,13 +44,26 @@ class Category(models.Model):
         verbose_name = _("Kategoriya")
         verbose_name_plural = _("Kategoriyalar")
 
+class SubCategory(models.Model):
+    name = models.CharField(max_length=255,null=True,blank=True,verbose_name=_("SubCategoriya nomi"))
+    image = models.ImageField()
+    category = models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,blank=True,verbose_name=_("Kategoriya"))
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self) -> str:
+        return self.category.name + " " +self.name
+    
+    
+
 
 
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("nomi"))
     price = models.FloatField(default=0, verbose_name=_("narxi"))
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
+    subcategory = models.ForeignKey(
+        SubCategory, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("subategoriya"))
     description = models.TextField(verbose_name=_("Ta'rifi"))
     characteristic = models.TextField(verbose_name=_("Xarakteristikasi"),null=True)
     
@@ -74,6 +77,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = _("Maxsulot")
         verbose_name_plural = _("Maxsulotlar")
+        
     @property
     def small_image(self):
         return  self.image_set.first().image_small.url
