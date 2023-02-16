@@ -169,7 +169,7 @@
         <!-- Navbar menu right-->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item me-lg-3">
-            <a class="nav-link text-uppercase active" aria-current="page" href="#">{% trans "Bosh sahifa" %}</a>
+            <a class="nav-link text-uppercase active" aria-current="page" href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a>
           </li>
           {% for cat in cats %}
           <li class="nav-item dropdown me-lg-3"><a class="nav-link text-uppercase dropdown-toggle" id="navbarDropdown" href="{%  url 'categoryDetail' cat.pk %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{cat.name}}</a>
