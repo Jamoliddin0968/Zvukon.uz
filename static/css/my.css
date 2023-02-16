@@ -2,17 +2,13 @@
     left: 0;
     bottom: 0;
     width: 30%;
-    /* background: rgba(0, 0, 0, 0.5); */
     color: #000000;
     padding: 10px;
+    /* background: rgba(0, 0, 0, 0.5); */
     text-align: center;
     display: flex;
     align-items: center;
-    
+    /* background-color: red; */
   }
 
-/* card style */
 
-#hh{
-  background-color: red !important;
-}
