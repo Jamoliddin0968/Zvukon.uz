@@ -26,6 +26,10 @@
   <link rel="stylesheet" href="{% static 'css/my.css' %}">
   <!-- Favicon-->
   <link rel="shortcut icon" href="{% static 'img/favicon.9f24e811.png' %}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -33,50 +37,160 @@
     .about__text{
       padding-top: 12px;
     }
+    .carousel {
+        height: calc(100vh - 70px);
+      }
+    .carousel-inner,
+    .carousel-item{
+      width: 100%;
+      height: calc(100vh - 70px);
+      overflow: hidden;
+      background-color: aliceblue;
+    }
+    .carousel-item .container-sm{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+    .carousel-item .container-sm .slide-comments{
+      width: min(100%,600px);
+      height: 100%;
+      z-index: 10;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .slide-comments .slide__product-date{
+      color: #6C757D;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: 'Quicksand', sans-serif;
+    }
+    .slide-comments .slide__product-name{
+      font-family: 'Quicksand', sans-serif;
+      font-size: 64px;
+      color: #212529;
+      text-align: center;
+    }
+    .slide-comments .slide__product-comment{
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      color: #6C757D;
+      width: min(100%,400px);
+      text-align: center;
+    }
+    .slide-comments .slide__product-shop{
+      font-family: 'Quicksand', sans-serif;
+      background-color: #4650dd;
+      display: inline-block;
+      padding: 10px 25px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-family: 'Quicksand', sans-serif; 
+
+    }
+    .slide-comments .slide__product-shop :is(span,i){
+      font-size: 16px;
+    }
+    .carousel-item .container-sm .slide-images{
+      width: min(100%,600px);
+      height: 500px;
+      position: absolute;
+      z-index: 0;
+      right: 0;
+    }
+    .carousel-item .container-sm .slide-images img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    @media (max-width:850px) {
+      .slide-comments .slide__product-name{
+        font-size: 50px;
+      }
+    }
+    @media (max-width:650px) {
+      .slide-comments .slide__product-name{
+        font-size: 40px;
+      }
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon{
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: #00000018;
+      box-shadow:  0 0 1px 2px rgba(0, 0, 255, 0.187);
+    }
+    .navbar{
+      min-height: 60px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+    .navbar :is(span,li,a){
+      font-size: 17px !important;
+      font-weight: 500 !important;
+      font-family: 'Quicksand', sans-serif !important;
+    }
+    #hover__link{
+      color: #6C757D ;
+    }
+    #hover__link:hover{
+      color: blueviolet !important;
+    }
   </style>
-
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-3 mb-lg-100">
+        <ul class="navbar-nav me-auto mb-lg-100">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">{% trans "Bosh sahifa" %}</a>
+            <a  class="nav-link active" aria-current="page" href="#">{% trans "Bosh sahifa" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">{% trans "Kategoriyalar" %}</a>
+            <a id="hover__link" class="nav-link" href="#">{% trans "Kategoriyalar" %}</a>
           </li>
-          
           <ul class="navbar-nav">
-            
         </ul>
-
         </ul>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row">
-          <ul class="navbar-nav me-auto mb-3 mb-lg-100">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <ul class="navbar-nav ms-auto mb-lg-0 flex-row">
+          <ul class="navbar-nav me-auto mb-lg-100">
+          <li  class="nav-item dropdown">
+            <a style="display: flex;align-items: center; justify-content: center; gap: 5px;" id="hover__link" class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {% trans "Tilni tanlang" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/uz{{request.get_full_path|slice:'3:'}}"><img src="{% static 'img/uz.png' %}" alt="" style="width: 22px; height: 20px;">  Uz</a></li>
-              <li><a class="dropdown-item" href="/ru{{request.get_full_path|slice:'3:'}}"><img src="{% static 'img/ru.png' %}" alt="" style="width: 22px; height: 20px;">  Ru</a></li>
+              <li><a id="hover__link" style="display: flex;align-items: center; justify-content: start; gap: 5px;" class="dropdown-item" href="/uz{{request.get_full_path|slice:'3:'}}"><img src="{% static 'img/uz.png' %}" alt="" style="width: 22px; height: 20px;">  Uz</a></li>
+              <li><a id="hover__link" style="display: flex;align-items: center; justify-content: start; gap: 5px;" class="dropdown-item" href="/ru{{request.get_full_path|slice:'3:'}}"><img src="{% static 'img/ru.png' %}" alt="" style="width: 22px; height: 20px;">  Ru</a></li>
             </ul>
             <li >
-              <a class="nav-link" style="color:blue" href="{{telegram}}">
+              <a style="display: flex;align-items: center; justify-content: center; gap: 5px; color: #4650dd;" class="nav-link" style="color:blue" href="{{telegram}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
                       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
                     </svg>{% trans "Telegram" %}</a>
           </li>
-          <li>
-              <a href="tel:+998901605923" class="nav-link">
-                  <i class="fa fa-phone">
+          <li style="display: flex;align-items: center; justify-content: center; gap: 5px;">
+              <a id="hover__link" href="tel:+998901605923" class="nav-link">
+                  <i style="font-size: 14px;" class="fa fa-phone">
                   </i>
                  {{phone}}
               </a>
