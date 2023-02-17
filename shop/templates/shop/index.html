@@ -4,88 +4,75 @@
 
 {% block content %}
 <style>
-  .min-50{
+  .min-50 {
     width: calc(100% - 50%);
     position: absolute;
     left: 0;
   }
-  
+
   .carousel-caption {
-      bottom: 0;
-      padding-top: 0;
-      padding-bottom: 0;
+    bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 </style>
 
-<section>
-<!-- slide-show start -->
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="container-sm">
-        <div class="slide-comments">
-          <span class="slide__product-date">Summer 2020</span>
-          <h1 class="slide__product-name">Fashion Collections</h1>
-          <p class="slide__product-comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-          <a class="slide__product-shop" href="#">
-            <i class="fas fa-shopping-bag me-2"></i>
-            <span>Shop now</span>
-          </a>
-        </div>
-        <div class="slide-images">
-          <img src="../../../static/img/123.png" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item ">
-      <div class="container-sm">
-        <div class="slide-comments">
-          <span class="slide__product-date">Summer 2020</span>
-          <h1 class="slide__product-name">Fashion Collections</h1>
-          <p class="slide__product-comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-          <a class="slide__product-shop" href="#">
-            <i class="fas fa-shopping-bag me-2"></i>
-            <span>Shop now</span>
-          </a>
-        </div>
-        <div class="slide-images">
-          <img src="../../../static/img/123.png" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="container-sm">
-        <div class="slide-comments">
-          <span class="slide__product-date">Summer 2020</span>
-          <h1 class="slide__product-name">Fashion Collections</h1>
-          <p class="slide__product-comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-          <a class="slide__product-shop" href="#">
-            <i class="fas fa-shopping-bag me-2"></i>
-            <span>Shop now</span>
-          </a>
-        </div>
-        <video class="slide-images"  autoplay loop muted>
-          <source src="\images\videos\Replay_2023-02-09_00-02-08.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<!-- slide-show end -->
+<section class="py-0">
+  <!-- slide-show start -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+      {% for cat in cats %}
+      {% if forloop.counter == 1 %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      {% else %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter | add:"-1" }}" aria-label="Slide {{forloop.counter}}"></button>
+      {% endif %}
+      {% endfor %}
 
+    </div>
+    <div class="carousel-inner">
+      {% for cat in cats %}
+      {% if forloop.counter == 1 %}
+      <div class="carousel-item active">
+
+
+        {% else %}
+        <div class="carousel-item ">
+          {% endif %}
+          <div class="container-sm">
+
+            <div class="slide-images">
+              <img src="{{cat.image.url}}" alt="">
+            </div>
+
+            <div class="slide-comments">
+              <span class="slide__product-date"></span>
+              <h1 class="slide__product-name">{{cat.name}}</h1>
+              <p class="slide__product-comment">{{cat.description}}</p>
+              <a class="slide__product-shop" href="{% url 'categoryDetail' cat.pk %}"">
+                <i class="fas fa-shopping-bag me-2"></i>
+                <span>{% trans "Ko'rish"  %}</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- slide-show end -->
 </section>
 
 <!-- New arrivals-->
@@ -101,8 +88,9 @@
         <div class="swiper-slide pb-5">
           <div class="product mb-4">
             <span class="badge rounded-0 bg-primary">{% trans "Yangi" %}</span>
-            <a style="display: block; padding: 20px 10px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="{% url 'productDetail' product.pk %}"><img class="img-fluid" style="width: 100%; height: 100%;" src={{ product.small_image}}
-                alt="Round grey hanging decor"></a>
+            <a style="display: block; padding: 20px 10px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+              href="{% url 'productDetail' product.pk %}"><img class="img-fluid" style="width: 100%; height: 100%;"
+                src={{ product.small_image}} alt="Round grey hanging decor"></a>
           </div>
           <h6 class="text-center"><a class="reset-anchor"
               href="{% url 'productDetail' product.pk %}">{{product.name}}</a></h6>
@@ -127,16 +115,9 @@
   </div>
 </section>
 <!-- Divider section-->
-<section class="py-5 bg-center bg-cover" style="background: url(/static/img/divider-bg.0d7f8f0b.jpg)">
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-lg-6 ms-auto">
-        <h2 class="hero-heading">{% trans "Yangi soatlar to'plami" %}</h2>
-        <p class="text-muted">{% trans "Mutaxassislarning ta'kidlashicha, hamma narsa birinchi xaridni amalga oshirishdan oldin sodir bo'lishi kerak." %}</p><a class="btn btn-primary"> <i class="fas fa-shopping-bag-mr-2"></i>{% trans "Hoziroq xarid qiling" %}</a>
-      </div>
-    </div>
-  </div>
-</section>
+<video class="img-fluid" autoplay loop muted playsinline>
+  <source src="\images\videos\Replay_2023-02-09_00-02-08.mp4" type="video/mp4">
+</video>
 <!-- Featured products-->
 <section class="py-5">
   <div class="container py-5">
@@ -151,11 +132,13 @@
         <div class="swiper-slide pb-5">
           <div class="product mb-4">
             <span class="badge rounded-0 bg-danger">{% trans "Sotildi" %}</span>
-            <a style="display: block; padding: 20px 10px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="{% url 'productDetail' product.pk %}">
+            <a style="display: block; padding: 20px 10px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+              href="{% url 'productDetail' product.pk %}">
               <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
             </a>
           </div>
-          <h6 class="text-center"><a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{ product.name}}</a></h6>
+          <h6 class="text-center"><a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{
+              product.name}}</a></h6>
           <p class="text-center text-muted font-weight-bold">{{ product.price }}</p>
         </div>
         {% endfor %}

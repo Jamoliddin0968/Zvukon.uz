@@ -10,6 +10,7 @@ def categories(request):
         phone = Account.objects.filter(name=Account.PHONE_NUMBER).first().link
     if Account.objects.filter(name=Account.INSTAGRAM).exists():
         instagram = Account.objects.filter(name=Account.INSTAGRAM).first().link
+    
     context = {
         "cats":cats,
         "accounts":accounts,
