@@ -34,7 +34,7 @@
     <div class="carousel-inner">
       {% for cat in cats %}
       {% if forloop.counter == 1 %}
-      <div class="carousel-item active">
+    <div class="carousel-item active">
 
 
         {% else %}
@@ -42,9 +42,6 @@
           {% endif %}
           <div class="container-sm">
 
-            <div class="slide-images">
-              <img src="{{cat.image.url}}" alt="">
-            </div>
 
             <div class="slide-comments">
               <span class="slide__product-date"></span>
@@ -56,6 +53,16 @@
               </a>
             </div>
 
+            {% if cat.media == "Image" %}
+            <div class="slide-images">
+              <img src="{{cat.image_fon.url}}" alt="">
+            </div>
+            {% else %}
+            <video class="slide-images" autoplay loop muted playsinline>
+              <source src="{{cat.video_file.url}}" type="video/mp4">
+            </video>
+            {% endif %}
+            
           </div>
         </div>
         {% endfor %}
@@ -115,9 +122,42 @@
   </div>
 </section>
 <!-- Divider section-->
-<video class="img-fluid" autoplay loop muted playsinline>
-  <source src="\images\videos\Replay_2023-02-09_00-02-08.mp4" type="video/mp4">
-</video>
+<hr>
+{% for cat in cats %}
+<section class="py-5">
+  <div class="container py-5">
+    <header class="mb-3 text-center">
+      <h2 class="mb-0">{{cat.name}}</h2>
+      {% comment %} <p class="text-muted">{{cat.description}}</p> {% endcomment %}
+    </header>
+        <div class="row">
+          {% for subcat in cat.subcats %}
+          <!-- Product-->
+          <div class="col-xl-3 col-lg-4 col-6">
+            <div class="product mb-4"><a
+                href="{% url 'subcategoryDetail' subcat.pk %}"><img class="img-fluid" src="{{subcat.image_fon.url}}"
+                  alt="Round grey hanging decor"></a>
+            </div>
+            <h6 class="text-center"><a class="reset-anchor" href="{% url 'subcategoryDetail' subcat.pk %}">{{subcat.name}}</a></h6>
+          </div>
+          {% endfor %}
+         
+        </div>
+  </div>
+  <div class="py-5 bg-center bg-cover" style="background: url({% static 'img/banner.jpg' %})">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-6 ms-auto">
+          <h2 class="hero-heading">{{cat.name}}</h2>
+          <p class="text-muted">{{cat.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+
+
 <!-- Featured products-->
 <section class="py-5">
   <div class="container py-5">
@@ -137,8 +177,7 @@
               <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
             </a>
           </div>
-          <h6 class="text-center"><a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{
-              product.name}}</a></h6>
+          <h6 class="text-center"><a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{product.name}}</a></h6>
           <p class="text-center text-muted font-weight-bold">{{ product.price }}</p>
         </div>
         {% endfor %}

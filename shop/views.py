@@ -55,18 +55,20 @@ def categoryDetail(request,pk):
     context = {
         "subcats":subcats,
         "cat_name":cat.name,
-        "products":products
+        "products":products,
+        "currentcat":cat
     }
     return render(request,"shop/cat.html",context)
 
 def subcategoryDetail(request,pk):
     subcat = get_object_or_404(SubCategory,pk=pk)
-    subcats = subcat.cat.subcategory_set.all()
+    subcats = subcat.category.subcategory_set.all()
     products = subcat.product_set.all()
     context = {
         "subcats":subcats,
         "cat_name":subcat.name,
-        "products":products
+        "products":products,
+        "currentcat":subcat
     }
     return render(request,"shop/cat.html",context)
 

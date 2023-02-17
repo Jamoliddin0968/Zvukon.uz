@@ -5,24 +5,34 @@
 {% block content %}
 
 <!-- Hero section-->
-<section class="sub-hero bg-center bg-cover d-flex align-items-center"
-  style="background: url(img/bg-banner.f561f8e8.jpg)">
-  <div class="container">
-    <h1 class="mb-1 hero-heading">Shop</h1>
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb mb-0 px-0">
-        <li class="breadcrumb-item"><a class="reset-anchor" href="{%url 'home' %}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Shop</li>
-      </ol>
-    </nav>
-  </div>
+<section class="py-0">
+  <!-- slide-show start -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+          <div class="container-sm">
+            <div class="slide-images">
+              <img src="{{currentcat.image_fon.url}}" alt="">
+            </div>
+            <div class="slide-comments">
+              <span class="slide__product-date"></span>
+              <h1 class="slide__product-name">{{currentcat.name}}</h1>
+              <p class="slide__product-comment">{{currentcat.description}}</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- slide-show end -->
 </section>
 <section class="py-5">
   <div class="container py-5">
     <div class="row">
       <!-- Shop sidebar-->
       <div class="col-xl-2 col-lg-3 order-2 order-lg-1">
-        <h5 class="mb-4">Shop by Category</h5>
+        <h5 class="mb-4">{% trans "Subkategoriya bo'yicha filtrlash"  %}</h5>
         <ul class="list-unstyled text-muted mb-5">
           {% for item in subcats %}
           <li class="mb-2 d-flex align-items-center justify-content-between"><a class="reset-anchor"

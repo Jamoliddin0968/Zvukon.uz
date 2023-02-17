@@ -26,30 +26,44 @@ def rename_product_image(instance, filename):
     return os.path.join(upload_to, filename)
 
 
+VIDEO, IMAGE = ("Video", "Image")
+
+
 class Category(models.Model):
+    TYPES = ((VIDEO, VIDEO), (IMAGE, IMAGE))
     name = models.CharField(max_length=255, verbose_name=_(
         "Kategoriya nomi"), null=True, blank=True)
     description = models.TextField(verbose_name=_(
         "Kategoriya tarifi"), null=True, blank=True)
     image = models.ImageField(
-        upload_to="category-image", verbose_name=_("Rasm"))
+        upload_to="category-image", verbose_name=_("Rasm"), help_text=_("rasm o'lchami 634x700 nisbatda bo'lishi kerak"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     video_file = models.FileField(upload_to='videos/', validators=[
         FileExtensionValidator(allowed_extensions=VIDEO_EXTENSIONS),
-    ], null=True, blank=True)
+    ], null=True, blank=True,help_text=_("rasm o'lchami 1200x600 nisbatda bo'lishi kerak"))
+
+    media = models.CharField(_("media"), max_length=10, help_text=_(
+        "Asosiy sahifada rasm yoki video turishini tanlash"), default=IMAGE, choices=TYPES)
 
     image_fon = ImageSpecField(
         source='image',
-        processors=[Resize(950, 700)],
+        processors=[Resize(634, 740)],
         format='PNG',
         options={'quality': 100}
     )
-
+    image_bg = ImageSpecField(
+        source='image',
+        processors=[Resize(2533, 1105)],
+        format='PNG',
+        options={'quality': 100}
+    )
     def __str__(self) -> str:
         return self.name
-
+    @property
+    def subcats(self):
+        return self.subcategory_set.all()
     class Meta:
         # db_table = "Kategoriya"
         verbose_name = _("Kategoriya")
@@ -64,6 +78,12 @@ class SubCategory(models.Model):
         Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image_fon = ImageSpecField(
+        source='image',
+        processors=[Resize(634, 740)],
+        format='PNG',
+        options={'quality': 100}
+    )
 
     def __str__(self) -> str:
         return self.name
@@ -111,7 +131,7 @@ class Product(models.Model):
     @property
     def price(self):
         if self.currency == DOLLAR:
-            return DOLLAR +" " + str(self.value)
+            return DOLLAR + " " + str(self.value)
         return str(self.value) + " " + SOM
 
     @property
@@ -121,6 +141,8 @@ class Product(models.Model):
     class Meta:
         verbose_name = _("Maxsulot")
         verbose_name_plural = _("Maxsulotlar")
+
+
 class Image(models.Model):
     image = models.ImageField(
         upload_to=rename_product_image, verbose_name=_("rasm"), max_length=150, help_text=_("Tavsiya etiladiogan rasm o'lchani 719x791"))
