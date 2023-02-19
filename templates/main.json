@@ -1,0 +1,16 @@
+{
+    "props": {
+        "page": "/",
+        "query": {},
+        "buildId": "6rZr5K__fzhJcyQc4j_4l",
+        "runtimeConfig": {
+            "localeSubpaths": {
+                "uz": "uz"
+            }
+        },
+        "isFallback": false,
+        "gssp": true,
+        "appGip": true,
+        "scriptLoader": []
+    }
+}
