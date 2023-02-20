@@ -36,26 +36,26 @@ class Category(models.Model):
     description = models.TextField(verbose_name=_(
         "Kategoriya tarifi"), null=True, blank=True)
     image = models.ImageField(
-        upload_to="category-image", verbose_name=_("Rasm"), help_text=_("rasm o'lchami 634x700 nisbatda bo'lishi kerak"))
+        upload_to="category-image", verbose_name=_("Rasm"), help_text=_("rasm o'lchami 1920x1080 nisbatda bo'lishi kerak"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     video_file = models.FileField(upload_to='videos/', validators=[
         FileExtensionValidator(allowed_extensions=VIDEO_EXTENSIONS),
-    ], null=True, blank=True,help_text=_("rasm o'lchami 1200x600 nisbatda bo'lishi kerak"))
+    ], null=True, blank=True,help_text=_("Video o'lchami 1920x1080 nisbatda bo'lishi kerak"))
 
     media = models.CharField(_("media"), max_length=10, help_text=_(
         "Asosiy sahifada rasm yoki video turishini tanlash"), default=IMAGE, choices=TYPES)
 
     image_fon = ImageSpecField(
         source='image',
-        processors=[Resize(634, 740)],
+        processors=[Resize(1920, 1080)],
         format='PNG',
         options={'quality': 100}
     )
     image_bg = ImageSpecField(
         source='image',
-        processors=[Resize(2533, 1105)],
+        processors=[Resize(1920, 1080)],
         format='PNG',
         options={'quality': 100}
     )
