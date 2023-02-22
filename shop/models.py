@@ -170,3 +170,10 @@ class Image(models.Model):
     class Meta:
         verbose_name = _("Rasm")
         verbose_name_plural = _("Rasmlar")
+
+class HomePageImages(models.Model):
+    img = models.ImageField(_("Bosh mahsulotlar pastki qismidan chiqadigan rasm"), upload_to="settings/", height_field=1105, width_field=2533, max_length=None)
+    is_active = models.BooleanField(_("Activligi"),default=False)
+    
+    def __str__(self) -> str:
+        return self.img.url

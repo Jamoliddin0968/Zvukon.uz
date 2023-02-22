@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product,Category,Image,SubCategory
+from .models import Product,Category,Image,SubCategory,HomePageImages
 from modeltranslation.admin import TranslationAdmin
 
 from django.contrib.auth.models import Group
@@ -42,7 +42,11 @@ class ImageAdmin(admin.ModelAdmin):
     #     return False
 
     
-
+@admin.register(HomePageImages)
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display = ['img','is_active']
+    list_per_page = 10
+    
 @admin.register(SubCategory)
 class SubCategoryAdmin(TranslationAdmin):
     list_display = ['name','category','created_at','updated_at']

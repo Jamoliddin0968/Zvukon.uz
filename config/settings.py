@@ -78,7 +78,6 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                # django.template.context_processors.request
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 "shop.context_processors.categories",
@@ -119,9 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0']       
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COKIES_SECURE=True
+CSRF_COKIE_SECURE=True
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
