@@ -67,3 +67,10 @@ def categoryDetail(request,pk):
         "cat_name":cat.name,
     }
     return render(request,"shop/cat.html",context)
+
+def shoppage(request):
+    products = Product.objects.all().order_by('?')
+    context = {
+        "products": products
+    }
+    return render(request,"shop/shop.html",context)
