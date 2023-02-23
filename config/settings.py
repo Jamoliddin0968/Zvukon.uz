@@ -30,13 +30,6 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
-
-    # 'jet.dashboard',
-    # 'jet',
-    # 'suit',
-    # 'grappelli',
-    # "semantic_admin",
-    # 'jazzmin',
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -118,8 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-SESSION_COKIES_SECURE=True
-CSRF_COKIE_SECURE=True
+# SESSION_COKIES_SECURE=True
+# CSRF_COKIE_SECURE=True
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 

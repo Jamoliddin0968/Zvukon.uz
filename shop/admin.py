@@ -12,7 +12,7 @@ class ImageInline(admin.StackedInline):
     
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):
-    list_display = ['name',"video_file",'created_at','updated_at']
+    list_display = ['name',"description"]
     search_fields = ['name']
     list_per_page = 10
         
@@ -20,9 +20,7 @@ class CategoryAdmin(TranslationAdmin):
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
     list_display = ['name','price','subcategory','created_at','updated_at']
-    # list_editable = ['price','count','is_active','color']
-    # list_filter = ['is_active']
-
+    list_display_links = ["name","price"]
     search_fields = ['name','description']
     inlines = (ImageInline,)
     list_per_page = 10
@@ -36,20 +34,27 @@ class ImageAdmin(admin.ModelAdmin):
     
     def has_add_permission(self, request):
         return False
-
-    # This will help you to disable delete functionaliyt
-    # def has_delete_permission(self, request, obj=None):
-    #     return False
-
     
+
+
 @admin.register(HomePageImages)
-class SubCategoryAdmin(admin.ModelAdmin):
-    list_display = ['img','is_active']
-    list_per_page = 10
+class ImageAdmin(admin.ModelAdmin):
     
+    list_display = ['caption_text',"img"]
+    list_display_links = ['caption_text',"img"]
+    
+    
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 @admin.register(SubCategory)
 class SubCategoryAdmin(TranslationAdmin):
-    list_display = ['name','category','created_at','updated_at']
+    list_display = ['name','category']
     search_fields = ['name']
     list_per_page = 10
+
+
     

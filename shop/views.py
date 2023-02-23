@@ -1,5 +1,5 @@
 from django.shortcuts import render , get_object_or_404
-from .models import Category , Product,SubCategory
+from .models import Category , Product,SubCategory , HomePageImages
 from hitcount.utils import get_hitcount_model
 from urllib.parse import urlparse
 from django.conf import settings
@@ -28,13 +28,11 @@ def set_language(request, language):
 
 
 def productList(request):
-    # cats = Category.objects.all().order_by("-name")
-    new_products = Product.objects.all().order_by("-id")
-    popular_products = Product.objects.all().order_by("id")
-    
+    cats = Category.objects.all().order_by("-id")[:5]
+    slides = HomePageImages.objects.all()
     context = {
-        "new_products":new_products,
-        "popular_products":popular_products
+        "ftcats":cats,
+        "slides":slides
     }
     return render(request,"shop/index.html",context)
 

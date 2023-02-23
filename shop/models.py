@@ -36,34 +36,27 @@ class Category(models.Model):
     description = models.TextField(verbose_name=_(
         "Kategoriya tarifi"), null=True, blank=True)
     image = models.ImageField(
-        upload_to="category-image", verbose_name=_("Rasm"), help_text=_("rasm o'lchami 1920x1080 nisbatda bo'lishi kerak"))
+        upload_to="category-image", verbose_name=_("Rasm"), help_text=_("rasm o'lchami 2533x1105 nisbatda bo'lishi kerak"))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    video_file = models.FileField(upload_to='videos/', validators=[
-        FileExtensionValidator(allowed_extensions=VIDEO_EXTENSIONS),
-    ], null=True, blank=True,help_text=_("Video o'lchami 1920x1080 nisbatda bo'lishi kerak"))
-
-    media = models.CharField(_("media"), max_length=10, help_text=_(
-        "Asosiy sahifada rasm yoki video turishini tanlash"), default=IMAGE, choices=TYPES)
-
-    image_fon = ImageSpecField(
-        source='image',
-        processors=[Resize(1920, 1080)],
-        format='PNG',
-        options={'quality': 100}
-    )
     image_bg = ImageSpecField(
         source='image',
-        processors=[Resize(1920, 1080)],
+        processors=[Resize(2533, 1105)],
         format='PNG',
         options={'quality': 100}
     )
     def __str__(self) -> str:
         return self.name
+    
     @property
     def subcats(self):
         return self.subcategory_set.all()
+    
+    def getProducts(self):
+        lst = [ product for cat in self.subcats for product in cat.product_set.all() ][:10]
+        return lst
+    
     class Meta:
         # db_table = "Kategoriya"
         verbose_name = _("Kategoriya")
@@ -73,20 +66,11 @@ class Category(models.Model):
 class SubCategory(models.Model):
     name = models.CharField(max_length=255, null=True,
                             blank=True, verbose_name=_("Subkategoriya nomi"))
-    image = models.ImageField(upload_to="subcategory-images")
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("Kategoriya"))
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    image_fon = ImageSpecField(
-        source='image',
-        processors=[Resize(634, 740)],
-        format='PNG',
-        options={'quality': 100}
-    )
 
     def __str__(self) -> str:
-        return self.name
+        return self.category.name + " " + self.name
 
     class Meta:
         verbose_name = _("SubKategoriya")
@@ -172,8 +156,21 @@ class Image(models.Model):
         verbose_name_plural = _("Rasmlar")
 
 class HomePageImages(models.Model):
-    img = models.ImageField(_("Bosh mahsulotlar pastki qismidan chiqadigan rasm"), upload_to="settings/", height_field=1105, width_field=2533, max_length=None)
-    is_active = models.BooleanField(_("Activligi"),default=False)
+    img = models.ImageField(_("Carusel fon chiqadigan rasm"), upload_to="settings/", max_length=None)
+    date_text = models.CharField(max_length=100,help_text="Summer 2020")
+    caption_text = models.CharField(max_length=100,help_text="Fashion Collections")
+    description_text = models.TextField(help_text="Lorem ipsum dolor sit amet")
+    
+    image_bg = ImageSpecField(
+        source='img',
+        processors=[Resize(4520, 2295)],
+        format='PNG',
+        options={'quality': 100}
+    )
     
     def __str__(self) -> str:
         return self.img.url
+    
+    class Meta:
+        verbose_name = _("Bosh sahifa")
+        verbose_name_plural=_("Bosh sahifa")

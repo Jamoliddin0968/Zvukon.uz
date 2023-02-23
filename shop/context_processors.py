@@ -1,7 +1,7 @@
 from .models import Category
 from users.models import Account
 def categories(request):
-    cats = Category.objects.all().order_by("-name")
+    cats = Category.objects.all().order_by("-id")
     accounts = Account.objects.all()
     telegram=instagram=phone=None
     if Account.objects.filter(name=Account.TELEGRAM).exists():

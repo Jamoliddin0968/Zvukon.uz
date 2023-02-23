@@ -50,10 +50,10 @@
           <li class="nav-item dropdown me-lg-3">
             <a  class="nav-link text-uppercase dropdown-toggle"  id="navbarDropdown"
                   href="{%  url 'categoryDetail' cat.pk %}" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">{{cat.name}}</a>
+                  aria-expanded="false">{{cat.name | title}}</a>
             <ul aria-labelledby="navbarDropdown" class="dropdown-menu mt-3" >
               {% for subcat in cat.subcategory_set.all %}
-              <li><a class="dropdown-item" href="{%  url 'subcategoryDetail' subcat.pk %}">{{subcat.name}}</a></li>
+              <li><a class="dropdown-item" href="{%  url 'subcategoryDetail' subcat.pk %}">{{subcat.name | title}}</a></li>
               {% endfor %}
             </ul>
           </li>
@@ -77,47 +77,40 @@
   <footer class="bg-dark">
     <div class="container py-5">
       <div class="row">
-
+        <div class="col-md-4 col-sm-12 mb-3 mb-md-0"><img class="img-fluid mb-3" src="/static/img/logo-white.90827790.svg" alt="Patrol" width="120">
+        </div>
         <div class="col-md-2 col-sm-12 mb-3 mb-md-0">
-          <h6 class="text-white">
-            {% trans "Bosh sahifa" %}
-          </h6>
+          <h6 class="text-white">Menu</h6>
           <ul class="list-unstyled text-muted mb-0">
-            {% for cat in cats %}
-            <li class="mb-2">
-              <a class="reset-anchor" href="{% url 'categoryDetail' cat.pk %}">
-                {{cat.name}}
-              </a>
-            </li>
+
+            {% for cat in cats  %}
+              <li class="mb-2"> <a class="reset-anchor" href={% url 'categoryDetail' cat.pk %}>{{cat.name | title}}</a></li>
             {% endfor %}
-
-
           </ul>
         </div>
+        <div class="col-md-2 col-sm-12 mb-3 mb-md-0">
+        </div>
         <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
-          <h6 class="text-white">
-            {% trans "Biz bilan bog'lanish" %}
-          </h6>
+          <p class="lead mb-1 text-white"><a class="reset-anchor" href="tel:{{phone}}">{{phone}}</a></p>
+          <p class="text-muted">12 El Dorado, Las Vegas, AZ</p>
           <ul class="list-inline mb-0">
-            {% if phone %}
-            <p class="lead mb-1 text-white"><a class="reset-anchor" href={{phone}}>{{phone}}</a></p>
-            {% endif %}
-
-            {% if telegram %}
-            <li class="mb-2"><a href={{telegram}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                  fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
-                  <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
-                </svg>Telegram</a>
-            </li>
-            {% endif %}
-            {% if instagram %}
-            <li class="mb-2"><a href={{instagram}}><i class="fab fa-instagram">Instagram</i></a>
-            </li>
-            {% endif %}
-
-
+            <li class="list-inline-item"><a class="social-icon" href="index.html#"><i class="fab fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a class="social-icon" href="index.html#"><i class="fab fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a class="social-icon" href="index.html#"><i class="fab fa-youtube"></i></a></li>
+            <li class="list-inline-item"><a class="social-icon" href="index.html#"><i class="fab fa-pinterest"></i></a></li>
           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="border-top py-4" style="border-color: #1d1d1d !important">
+        <div class="row">
+          <div class="col-lg-6">
+            <p class="small text-muted mb-0">© 2023 All rights reserved.</p>
+          </div>
+          <div class="col-lg-6 text-lg-end">
+            <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://tsoft.uz">TSOFT.UZ</a></p>
+          </div>
         </div>
       </div>
     </div>

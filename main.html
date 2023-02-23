@@ -1,4 +1,39 @@
-        <!-- left menu -->
+<nav class="navbar navbar-expand-lg navbar-light py-2 py-lg-4 bg-white shadow-sm">
+  <div class="container">
+    <!-- Navbar toggler-->
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+          id="navbarSupportedContent">
+      <!-- Navbar menu right-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item me-lg-3">
+          <a class="nav-link text-uppercase active" aria-current="page" href="{% url 'home' %}">
+            {% trans "Bosh sahifa"%}
+          </a>
+        </li>
+        {% for cat in cats %}
+        <li class="nav-item dropdown me-lg-3">
+          <a  class="nav-link text-uppercase dropdown-toggle"  id="navbarDropdown"
+                href="{%  url 'categoryDetail' cat.pk %}" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">{{cat.name}}</a>
+          <ul aria-labelledby="navbarDropdown" class="dropdown-menu mt-3" >
+            {% for subcat in cat.subcategory_set.all %}
+            <li><a class="dropdown-item" href="{%  url 'subcategoryDetail' subcat.pk %}">{{subcat.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+  </div>
+</nav>
+    
+    
+    <!-- left menu -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-row">
             <ul class="navbar-nav me-auto mb-3 mb-lg-100">
               <li class="nav-item dropdown">
