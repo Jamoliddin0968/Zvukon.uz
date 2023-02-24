@@ -80,6 +80,7 @@ class SubCategory(models.Model):
 SOM, DOLLAR = ("so'm", "$")
 
 
+    
 class Product(models.Model):
 
     VALYUTA = (
@@ -101,6 +102,8 @@ class Product(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def getItems(self):
+        return self.items_set.all()
     @property
     def small_image(self):
         return self.image_set.first().image_small.url
@@ -109,8 +112,8 @@ class Product(models.Model):
     def medium_images(self):
         lst = [i.image_medium.url for i in self.image_set.all()[:4]]
         while len(lst) < 4:
-            lst.append(None)
-        return lst
+            lst.extend(lst)
+        return lst[:4]
 
     @property
     def price(self):
@@ -126,7 +129,15 @@ class Product(models.Model):
         verbose_name = _("Maxsulot")
         verbose_name_plural = _("Maxsulotlar")
 
-
+class Items(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    key = models.CharField(_("Hususiyat"), max_length=80)
+    value = models.CharField(_("Qiymat"), max_length=50)
+    
+    class Meta:
+        verbose_name = _("Texnik hususiyatlar")
+        verbose_name_plural = _("Texnik hususiyatlar")
+        
 class Image(models.Model):
     image = models.ImageField(
         upload_to=rename_product_image, verbose_name=_("rasm"), max_length=150, help_text=_("Tavsiya etiladiogan rasm o'lchani 719x791"))
@@ -154,12 +165,14 @@ class Image(models.Model):
     class Meta:
         verbose_name = _("Rasm")
         verbose_name_plural = _("Rasmlar")
-
+        
+    
 class HomePageImages(models.Model):
     img = models.ImageField(_("Carusel fon chiqadigan rasm"), upload_to="settings/", max_length=None)
     date_text = models.CharField(max_length=100,help_text="Summer 2020")
     caption_text = models.CharField(max_length=100,help_text="Fashion Collections")
     description_text = models.TextField(help_text="Lorem ipsum dolor sit amet")
+    
     
     image_bg = ImageSpecField(
         source='img',
@@ -167,10 +180,8 @@ class HomePageImages(models.Model):
         format='PNG',
         options={'quality': 100}
     )
-    
     def __str__(self) -> str:
         return self.img.url
-    
     class Meta:
         verbose_name = _("Bosh sahifa")
         verbose_name_plural=_("Bosh sahifa")

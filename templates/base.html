@@ -53,13 +53,25 @@
                   aria-expanded="false">{{cat.name | title}}</a>
             <ul aria-labelledby="navbarDropdown" class="dropdown-menu mt-3" >
               {% for subcat in cat.subcategory_set.all %}
-              <li><a class="dropdown-item" href="{%  url 'subcategoryDetail' subcat.pk %}">{{subcat.name | title}}</a></li>
+              <li><a class="dropdown-item" href="{%  url 'categoryDetail' cat.pk %}">{{subcat.name | title}}</a></li>
               {% endfor %}
             </ul>
           </li>
           {% endfor %}
         </ul>
 
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex-row">
+          <li class="nav-item dropdown me-lg-3">
+            <a  class="nav-link text-uppercase dropdown-toggle"  id="navbarDropdown"
+                  href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">{% trans "Tilni tanlang" %}</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/uz{{request.get_full_path|slice:'3:'}}"><img
+                      src="{% static 'img/uz.png' %}" alt="" style="width: 22px; height: 20px;"> Uz</a></li>
+                <li><a class="dropdown-item" href="/ru{{request.get_full_path|slice:'3:'}}"><img
+                      src="{% static 'img/ru.png' %}" alt="" style="width: 22px; height: 20px;"> Ru</a></li>
+              </ul>
+        </ul>
       </div>
     </div>
   </nav>

@@ -5,7 +5,7 @@
 {% block content %}
 
 <!-- Breadcrumb-->
-<div class="bg-light py-2">
+ <div class="bg-light py-2">
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 bg-light">
@@ -15,77 +15,91 @@
     </nav>
   </div>
 </div>
+
 <section class="py-5">
   <div class="container py-5">
     <div class="row">
       <div class="col-lg-6 mb-5 mb-lg-0">
         <div class="row">
+          <!-- Slider thumbnail-->
           <div class="col-md-2 order-2 order-md-1">
-            <!-- Slider thumbnails-->
-            <div class="p-1 pt-3 swiper-container swiper-thumbnails" id="detailSliderThumb">
+            <div class="swiper-container swiper-thumbnails" id="detailSliderThumb">   
               <div class="swiper-wrapper">
                 {% for img in object.medium_images %}
-                {% if img %}
-                <div style="min-height: 90px; box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);"
-                  class="swiper-slide d-flex align-items-center justify-content-center">
-                  <img class="img-fluid" src="{{img}}" alt="..">
-                </div>
-                {% else %}
-                <p class=" swiper-slide">
-                  <img class="img-fluid" src="{% static 'img/white.png' %}">
-                </p>
-                {% endif %}
+                <div class="swiper-slide"><img class="img-fluid" src="{{img}}" alt=".."></div>
                 {% endfor %}
               </div>
             </div>
           </div>
+          <!-- Slider thumbnails-->
+
           <div class="col-md-10 order-1 order-md-2 mb-4 mb-lg-0">
             <!-- Item slider-->
             <div class="swiper-container" id="detailSlider">
               <div class="swiper-wrapper">
                 {% for img in object.medium_images %}
-                {% if img %}
-                <div class="swiper-slide p-3">
-                  <a style="display: block; box-shadow: 0 0 4px rgba(0, 0, 0, 0.2)" class="glightbox" href={{img}}>
-                    <img class="img-fluid" src={{img}} alt="..">
-                  </a>
-                </div>
-
-                {% endif %}
+                  {% if img %}
+                  <div class="swiper-slide p-3">
+                    <a class="glightbox" href={{img}}>
+                      <img class="img-fluid" src={{img}} alt="..">
+                    </a>
+                  </div>
+                  {% endif %}
 
                 {% endfor %}
               </div>
             </div>
-          </div>
+            <!-- Item slider-->
+          </div> 
+          <!-- col md slider-->
         </div>
       </div>
       <!-- Item info-->
-      <div class="about__text col-lg-6">
+      <div class="col-lg-6">
         <div class="badge bg-info small rounded-0 mb-2">{% trans "Trenddagi" %}</div>
         <h1>{{object.name}}</h1>
         <div class="d-flex align-items-center">
         </div>
         <p class="h4">{{object.price}}</p>
-        <p class="text-small mb-4"></p>
-
-
-
-        <ul class="list-unstyled small d-inline-block">
-          <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{% trans "Kategoriya"%}:</strong><a class="reset-anchor ms-2">{{object.categoryname}}</a></li>
-          {% if phone %}
-          <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{% trans "Telefon
-              raqam" %}:</strong><a class="reset-anchor ms-2">{{phone}}</a></li>
-          {% endif %}
-          {%if telegram %}
-          <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{% trans "Telegram"
-              %}:</strong><a class="reset-anchor ms-2">{{telegram}}</a></li>
-          {% endif %}
-          {% if instagram %}
-          <li class="px-3 py-2 mb-1 bg-light text-muted"><strong class="text-uppercase text-dark">{% trans "Instagram"
-              %}:</strong><a class="reset-anchor ms-2">{{instagram}}</a></li>
-          {% endif %}
-        </ul>
+        
+        <div class="d-flex flex-wrap align-items-center mb-4">
+          <p class="mb-0 me-3">Ranglar:</p>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <input class="btn-check" id="color1" type="radio" name="colorVariants" checked>
+              <label class="btn p-0 m-0" for="color1"><i class="fas fa-circle text-warning"></i></label>
+            </li>
+            <li class="list-inline-item">
+              <input class="btn-check" id="color2" type="radio" name="colorVariants">
+              <label class="btn p-0 m-0" for="color2"><i class="fas fa-circle text-danger"></i></label>
+            </li>
+            <li class="list-inline-item">
+              <input class="btn-check" id="color3" type="radio" name="colorVariants">
+              <label class="btn p-0 m-0" for="color3"><i class="fas fa-circle text-info"></i></label>
+            </li>
+            <li class="list-inline-item">
+              <input class="btn-check" id="color4" type="radio" name="colorVariants">
+              <label class="btn p-0 m-0" for="color4"><i class="fas fa-circle text-success"></i></label>
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex flex-wrap align-items-center mb-4">
+          <p class="mb-0 me-3">Select size:</p>
+          <select class="form-control js-sort" name="size">
+            <option value="">44MM</option>
+          </select>
+        </div>
+        <div class="d-flex align-items-center mb-4">
+          <div class="border d-flex align-items-center justify-content-between p-1 me-2">
+            <div class="quantity py-0">
+              <button class="dec-btn p-0" onclick="decrease(this)"><i class="fas fa-caret-left"></i></button>
+              <input class="form-control border-0 shadow-0 p-0 quantity-result" type="text" value="1">
+              <button class="inc-btn p-0" onclick="increase(this)"><i class="fas fa-caret-right"></i></button>
+            </div>
+          </div><a class="btn btn-primary btn-sm py-2 border-bottom-0 px-5 me-3" target="_blank" href="https://t.me/Shaha7666"> <i class="fas fa-shopping-bag py-1 me-2"></i>Sotib olish</a><a class="p-0 reset-anchor d-inline-block mx-2"><i class="fas fa-heart"></i></a><a class="p-0 reset-anchor d-inline-block mx-2"><i class="fas fa-share-alt"></i></a>
+        </div><br>
       </div>
+
     </div>
   </div>
 </section>
@@ -124,7 +138,21 @@
           <div aria-labelledby="info-tab" class="tab-pane fade" id="info" role="tabpanel">
             <div class="p-3 p-md-5">
               <p class="text-muted">
-                {{object.characteristic}}
+                <div class="row">
+                  <div class="col-lg-6">
+                    <table class="table table-bordered">
+                      <tbody>
+                        {% for item in object.getItems %}
+                        <tr>
+                          <th class="small px-3">{{item.key}}</th>
+                          <td class="small px-3">{{item.value}}</td>
+                        </tr>
+                        {% endfor %}
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </p>
             </div>
           </div>
@@ -132,7 +160,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> 
 
 
 <!-- Similar items-->
@@ -147,14 +175,13 @@
 
         <div class="swiper-container" id="similarItemsSlider">
 
-          <div class="swiper-wrapper p-3">
+          <div class="swiper-wrapper">
             <!-- Product-->
             {% for product in popular_products %}
             <div class="swiper-slide pb-5">
               <div class="product mb-4">
                 <span class="badge rounded-0 bg-danger">{% trans "Trenddagi" %}</span>
-                <a style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; display: block; padding: 20px 10px;"
-                  href="{% url 'productDetail' product.pk %}">
+                <a href="{% url 'productDetail' product.pk %}">
                   <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
                 </a>
               </div>
@@ -173,12 +200,14 @@
             </svg>
             {% trans "Oldingi" %}
           </div>
+          
           <div class="swiper-button-next px-3 py-2">
-            {% trans "Keyingi" %}
+        
             <svg class="svg-icon svg-icon-md">
               <use xlink:href="#arrow-right-1">
               </use>
             </svg>
+            {% trans "Keyingi" %}
           </div>
 
         </div>
