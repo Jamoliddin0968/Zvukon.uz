@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+<!--  Modal -->
+{% block content %}
+
+<!-- Breadcrumb-->
+ <div class="bg-light py-2">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0 bg-light">
+        <li class="breadcrumb-item" style= "color:#000"><a class="reset-anchor"  href="{% url 'home' %}">{% trans "Bosh sahifa" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{object.name}}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="row">
+          <!-- Slider thumbnail-->
+          <div class="col-md-2 order-2 order-md-1">
+            <div class="swiper-container swiper-thumbnails" id="detailSliderThumb" style="height:100%">   
+              <div class="swiper-wrapper">
+                {% for img in object.medium_images %}
+                <div class="swiper-slide"><img class="img-fluid" src="{{img}}" alt=".."></div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <!-- Slider thumbnails-->
+
+          <div class="col-md-10 order-1 order-md-2 mb-4 mb-lg-0">
+            <!-- Item slider-->
+            <div class="swiper-container" id="detailSlider">
+              <div class="swiper-wrapper">
+                {% for img in object.medium_images %}
+                  {% if img %}
+                  <div class="swiper-slide p-3">
+                    <a class="glightbox" href={{img}}>
+                      <img class="img-fluid" src={{img}} alt="..">
+                    </a>
+                  </div>
+                  {% endif %}
+
+                {% endfor %}
+              </div>
+            </div>
+            <!-- Item slider-->
+          </div> 
+          <!-- col md slider-->
+        </div>
+      </div>
+      <!-- Item info-->
+      <div class="col-lg-6">
+        <div class="badge bg-info small rounded-0 mb-2">{% trans "Trenddagi" %}</div>
+        <h1 style="color:#000">{{object.name}}</h1>
+        <div class="d-flex align-items-center">
+        </div>
+        <p class="h4" style="color:#000">{{object.price}}</p>
+        
+        <div class="d-flex flex-wrap align-items-center mb-4">
+          <p class="mb-0 me-3" style="color:#000">{% trans "Ranglar" %}</p>
+          <ul class="list-inline mb-0">
+               {% for color in object.color_set.all %}
+            <li class="list-inline-item" >
+              <label class="btn p-0 m-0" ><i class="fas fa-circle " style="color:{{color.color}}"></i></label>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="d-flex flex-wrap align-items-center mb-4">
+            {% if object.size %}
+          <p class="mb-0 me-3">Size:</p>
+          <select class="form-control js-sort" name="size">
+            <option value="" style="color:#000">{{object.size}}</option>
+          </select>
+          {% endif %}
+        </div>
+        <div class="d-flex align-items-center mb-4">
+          <div class="border d-flex align-items-center justify-content-between p-1 me-2">
+            <div class="quantity py-0">
+              <button class="dec-btn p-0" onclick="decrease(this)"><i class="fas fa-caret-left"></i></button>
+              <input class="form-control border-0 shadow-0 p-0 quantity-result" type="text" value="1">
+              <button class="inc-btn p-0" onclick="increase(this)"><i class="fas fa-caret-right"></i></button>
+            </div>
+          </div><a class="btn btn-primary btn-sm py-2 border-bottom-0 px-5 me-3" target="_blank" href="https://t.me/Shaha7666"> 
+            <i class="fas fa-shopping-bag py-1 me-2"></i>{% trans "Sotib olish" %}</a><a class="p-0 reset-anchor d-inline-block mx-2"><i class="fas fa-heart"></i></a><a class="p-0 reset-anchor d-inline-block mx-2"><i class="fas fa-share-alt"></i></a>
+        </div><br>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="pb-5">
+  <div class="container">
+    <div class="row">
+      <!-- Item information-->
+      <div class="col-xl-10 mx-auto">
+        <ul class="nav nav-tabs tabs-fill justify-content-center border-0 flex-column flex-md-row" id="myTab"
+          role="tablist">
+          <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+            <a aria-controls="description" aria-selected="true" class="nav-link text-small fw-bold py-3 border-0 active"
+              data-bs-toggle="tab" href="detail.html#description" id="description-tab" role="tab">
+              {% trans "Tavsif" %}
+            </a>
+          </li>
+          <li class="nav-item flex-fill text-center bg-light mx-2" role="presentation">
+            <a aria-controls="info" aria-selected="false" class="nav-link text-small fw-bold py-3 border-0"
+              data-bs-toggle="tab" href="detail.html#info" id="info-tab" role="tab">
+              {% trans "Qo'shimcha ma'lumot" %}
+            </a>
+          </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div aria-labelledby="description-tab" class="tab-pane fade show active" id="description" role="tabpanel">
+            <div class="p-3 p-md-5">
+              <p class="text-muted mb-4">
+                {{object.description}}
+              </p>
+            </div>
+          </div>
+          <!--add info -->
+          <div aria-labelledby="info-tab" class="tab-pane fade" id="info" role="tabpanel">
+            <div class="p-3 p-md-5">
+              <p class="text-muted">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <table class="table table-bordered">
+                      <tbody>
+                        {% for item in object.getItems %}
+                        <tr>
+                          <th class="small px-3" style="color:#000">{{item.key}}</th>
+                          <td class="small px-3" style="color:#000">{{item.value}}</td>
+                        </tr>
+                        {% endfor %}
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+
+
+<!-- Similar items-->
+<section class="pb-5">
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-xl-10 mx-auto">
+        <header class="text-center mb-5">
+          <h2 style="color:#000">{% trans "Sizga ham yoqishi mumkin" %}</h2>
+          <p class="text-muted">{% trans "Tegishli mahsulotlar" %}</p>
+        </header>
+
+        <div class="swiper-container" id="similarItemsSlider">
+
+          <div class="swiper-wrapper">
+            <!-- Product-->
+            {% for product in popular_products %}
+            <div class="swiper-slide pb-5">
+              <div class="product mb-4">
+                <span class="badge rounded-0 bg-danger">{% trans "Trenddagi" %}</span>
+                <a href="{% url 'productDetail' product.pk %}">
+                  <img class="img-fluid" src={{ product.small_image }} alt="Black Canon EOS camera">
+                </a>
+              </div>
+              <h6 class="text-center">
+                <a class="reset-anchor" style="color:#000" href="{% url 'productDetail' product.pk %}">{{ product.name }}
+                </a>
+              </h6>
+              <p class="text-center text-muted font-weight-bold">{{ product.price }}</p>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev px-3 py-2">
+            <svg class="svg-icon svg-icon-md">
+              <use xlink:href="#arrow-left-1">
+              </use>
+            </svg>
+            {% trans "Oldingi" %}
+          </div>
+          
+          <div class="swiper-button-next px-3 py-2">
+        
+            <svg class="svg-icon svg-icon-md">
+              <use xlink:href="#arrow-right-1">
+              </use>
+            </svg>
+            {% trans "Keyingi" %}
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

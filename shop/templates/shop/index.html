@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+  <!--  Modal -->
+  <section>
+    <div class="swiper-container" id="hero-slider">
+      <div class="swiper-wrapper">
+        {% for slide in slides %}
+        
+        <div class="swiper-slide hero bg-center bg-cover d-flex align-items-center" style="background: url({{slide.image_bg.url}})">
+          <div class="container">
+            <div class="row text-lg-center">
+              <div class="col-lg-8">
+                {% if slide.date_text %}
+                    <p class="h6 text-uppercase text-muted mb-3">{{slide.date_text}}</p>
+                {% endif %}
+                
+                <h1 class="hero-heading line-height-sm mb-2 title" data-swiper-parallax="-200">
+                  {% if slide.caption_text %}     
+                    {{slide.caption_text}}</h1>
+                {% endif %}
+                <div class="row">
+                  <div class="col-lg-5 mx-auto">
+                    <p class="font-weight-light text-muted mb-4 mt-3 subtitle" data-swiper-parallax="-400">
+                      {% if  slide.description_text %}
+                        {{slide.description_text}}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination px-4 py-2 text-end h5 font-weight-light"></div>
+    </div>
+  </section>
+<!-- New arrivals-->
+{% for cat in ftcats %}
+
+{% if forloop.counter > 1 %}
+<section class="py-5 bg-center bg-cover" style="background: url({{cat.image_bg.url}})">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-6 ms-auto w-75">
+        <h2 class="hero-heading">{{cat.name | title}}</h2>
+        {% if cat.description %}
+            
+        <p class="text-muted">{{cat.description | wordwrap:50}}</p>
+
+        {% endif %}
+        
+        <a class="btn btn-primary" href={% url 'categoryDetail' cat.pk %}> <i class="fas fa-shopping-bag-mr-2"></i>{% trans "Ko'rish" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="py-5">
+  <div class="container py-5">
+    <header class="mb-3 text-center" style="color:#000">
+      <h2 class="mb-0">{{cat.name | title}}</h2>
+      <p class="text-muted">{% trans "Eng yangi mahsulotlarni ko'rib chiqing" %}</p>
+    </header>
+    <div class="swiper-container pt-5" id="newArrivals">
+      <div class="swiper-wrapper">
+        {% for product in cat.getProducts  %}
+        <div class="swiper-slide pb-5">
+          <div class="product mb-4"><span class="badge rounded-0 bg-primary">{% trans "Yangi" %}</span>
+            <a href={% url 'productDetail' product.pk %}>
+              <img class="img-fluid" style="object-fit:cover" src={{product.small_image}} alt="Round grey hanging decor">
+            </a>      
+          </div>
+          <h6 class="text-center" style="color:#000"><a class="reset-anchor" href={% url 'productDetail' product.pk %}>{{product.name | title}}</a></h6>
+          <p class="text-center text-muted font-weight-bold">{{product.price}}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev px-3 py-2">
+        <svg class="svg-icon svg-icon-md">
+          <use xlink:href="/static/#arrow-left-1"> </use>
+        </svg>{% trans "Oldingi" %}
+      </div>
+      <div class="swiper-button-next px-3 py-2">
+                   {% trans "Keyingi" %}
+        <svg class="svg-icon svg-icon-md">
+          <use xlink:href="/static/#arrow-right-1"> </use>
+        </svg>
+      </div>   
+    </div>    
+  </div> 
+</section>  
+
+{% endfor %}
+
+<!-- Divider section-->
+{% endblock content %}

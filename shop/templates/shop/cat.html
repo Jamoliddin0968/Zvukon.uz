@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<section class="sub-hero bg-center bg-cover d-flex align-items-center" style="background: url({{currentcat.image_bg.url}})">
+  <div class="container">
+    <h1 class="mb-1 hero-heading" >{{cat_name|title}}</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0 px-0">
+        <li class="breadcrumb-item" ><a class="reset-anchor" href={% url 'home' %}>{% trans "Bosh sahifa" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{cat_name | title}}</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row">
+      <!-- Shop listing-->
+      <div class="col-xl-12 col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+        <!-- Listing filter-->
+        
+        <div class="row">
+          {% for product in page_obj.object_list %} <div class="col-xl-3 col-lg-4 col-6">
+            <div class="product mb-4"><span class="badge rounded-0 bg-"></span><a href={% url 'productDetail' product.pk %}>
+              <img class="img-fluid" src="{{product.small_image}}" alt="Air Jordan 12 gym red"></a>
+            </div>
+            <h6 class="text-center" style="color:#000"><a class="reset-anchor" href={% url 'productDetail' product.pk %}>{{product.name | title}}</a></h6>
+            <p class="text-center text-muted font-weight-bold mb-4">{{product.price}}</p>
+           </div>
+          {% endfor %}
+<nav class="pt-5" aria-label="Page navigation">
+  <ul class="pagination justify-content-center justify-content-lg-end mb-0">
+    {% if page_obj.has_previous %}
+    <li class="page-item mx-1"><a class="page-link py-1" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+    {% endif %}
+   {% for i in page_obj.paginator.page_range %} 
+    {% if page_obj.number == i %}
+      <li class="page-item mx-1 active"><a class="page-link py-1" href="?page={{i}}">{{i}}</a></li>
+    {% else %}
+      <li class="page-item mx-1"><a class="page-link py-1" href="?page={{i}}">{{i}}</a></li>
+    {% endif %}
+    
+    {% endfor %}
+    
+    {% if page_obj.has_next %}
+    <li class="page-item mx-1"><a class="page-link py-1" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+    {% endif %}
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

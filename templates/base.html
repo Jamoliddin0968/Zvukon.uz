@@ -1,0 +1,198 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>zvukon.uz</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="google-site-verification" content="7OEBbIvKQETXrqbCQJIgD30WhJKyiAE7s243Cky8FjA" />
+
+  <!-- Google fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&amp;display=swap">
+  <!-- Swiper slider-->
+  <link rel="stylesheet" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+  <!-- Lightbox-->
+  <link rel="stylesheet" href="{% static 'vendor/glightbox/css/glightbox.css' %}">
+  <!-- Choices.js-->
+  <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.css' %}">
+  <!-- Nouislider-->
+  <link rel="stylesheet" href="{% static 'vendor/nouislider/nouislider.min.css' %}">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="{% static 'css/style.default.71609fc8.css'  %}" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="{% static  'css/custom.0a822280.css' %}">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="{% static 'img/favicon.9f24e811.png' %}">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light py-2 py-lg-4 shadow-sm" style="background-color:#04003e">
+      
+    <div class="container-fluid">
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> <i class="fas fa-bars" style="color:white; font-size:28px;"></i></span></button>
+   
+      <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+            id="navbarSupportedContent">
+        <!-- Navbar menu right-->
+        <a class="nav-link" aria-current="page" href="{% url 'home' %}">
+              <img  src={% static 'img/zvukon.png' %} style="height: 55px;" alt="">
+            </a>
+        <ul class="navbar-nav me-auto mb-lg-0" style="display: flex; flex-wrap: wrap;">
+          {% for cat in cats %}
+          <li class="nav-item dropdown ">
+            <a  class="nav-link text-uppercase dropdown-toggle"  id="navbarDropdown"
+                  href="{%  url 'categoryDetail' cat.pk %}" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">{{cat.name | title}}</a>
+            <ul aria-labelledby="navbarDropdown" class="dropdown-menu mt-3" >
+              {% for subcat in cat.subcategory_set.all %}
+              <li><a class="dropdown-item" style="font-weight: bold;" href="{%  url 'subcategoryDetail' subcat.pk %}">{{subcat.name | title}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex-row">
+          <li class="nav-item dropdown me-lg-3">
+            <a  class="nav-link text-uppercase dropdown-toggle"  id="navbarDropdown"
+                  href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">{% trans "Til" %}</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/uz{{request.get_full_path|slice:'3:'}}"><img
+                      src="{% static 'img/uz.png' %}" alt="" style="width: 22px; height: 20px;"> Uz</a></li>
+                <li><a class="dropdown-item" href="/ru{{request.get_full_path|slice:'3:'}}"><img
+                      src="{% static 'img/ru.png' %}" alt="" style="width: 22px; height: 20px;"> Ru</a></li>
+              </ul>
+        </ul>
+      </div>
+            <div class="search navbar-nav ms-auto mb-2 mb-lg-0 flex-end">
+        <form class="search-box" method="get" action="{% url 'search' %}" >
+          <input type="text" id="search-input" name="query" placeholder={% trans "Qidiruv..."%}>
+          <div id="search-button">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-circle-notch fa-spin"></i>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+  {% block content %}
+  {% endblock content %}
+  <script>
+    window.replainSettings = { id: '1413aa43-6088-4065-a743-fb08ab501363' };
+    (function (u) {
+      var s = document.createElement('script'); s.async = true; s.src = u;
+      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })('https://widget.replain.cc/dist/client.js');
+  </script>
+  <footer class="bg-dark">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+          <img class="img-fluid mb-3" src="{% static 'img/zvukon.png' %}" alt="Patrol" width="120">
+          <li class="mb-2 list-unstyled text-muted"> <a class="reset-anchor" href={% url 'about' %}>{% trans "Biz haqimizda" %}</a></li>
+          <li class="mb-2 list-unstyled text-muted"> <a class="reset-anchor" href={% url 'adress' %}>{% trans "Bizning filiallar" %}</a></li>
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3 mb-md-0">
+          <h6 class="text-white">Menu</h6>
+          <ul class="list-unstyled text-muted mb-0">
+
+            {% for cat in cats  %}
+              <li class="mb-2"> <a class="reset-anchor" href={% url 'categoryDetail' cat.pk %}>{{cat.name | title}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-12 mb-3 mb-md-0">
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3 mb-md-0">
+          <p class="lead mb-1 text-white"><a class="reset-anchor" href="tel:{{phone}}">{{phone}}</a></p>
+          <p class="text-muted">{{adress}}</p>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a class="social-icon" href="{{facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+            {% comment %} <li class="list-inline-item"><a class="social-icon" href="index.html#"><i class="fab fa-twitter"></i></a></li> {% endcomment %}
+            <li class="list-inline-item"><a class="social-icon" href={{telegram}}><i class="fab fa-telegram"></i></a></li>
+            <li class="list-inline-item"><a class="social-icon" href={{instagram}}><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="border-top py-4" style="border-color: #1d1d1d !important">
+        <div class="row">
+          <div class="col-lg-6">
+            <p class="small text-muted mb-0">© 2023 All rights reserved.</p>
+          </div>
+          <div class="col-lg-6 text-lg-end">
+            <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://tsoft.uz">TSOFT.UZ</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src={% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+  <script src={% static "vendor/swiper/swiper-bundle.min.js" %}></script>
+  <script src={% static "vendor/glightbox/js/glightbox.js" %}></script>
+  <script src={% static "vendor/choices.js/public/assets/scripts/choices.js" %}></script>
+  <script src={% static "vendor/nouislider/nouislider.min.js" %}></script>
+  <script src={% static "js/theme.b8c44118.js" %}></script>
+  <script src={% static "js/js-cookie.55cdbe0d.js" %}> </script>
+  <script src={% static "js/demo.7c677988.js" %}> </script>
+  <script>
+    // ------------------------------------------------------- //
+    //   Inject SVG Sprite - 
+    //   see more here 
+    //   https://css-tricks.com/ajaxing-svg-sprite/
+    // ------------------------------------------------------ //
+    function injectSvgSprite(path) {
+
+      var ajax = new XMLHttpRequest();
+      ajax.open("GET", path, true);
+      ajax.send();
+      ajax.onload = function (e) {
+        var div = document.createElement("div");
+        div.className = 'd-none';
+        div.innerHTML = ajax.responseText;
+        document.body.insertBefore(div, document.body.childNodes[0]);
+      }
+    }
+    // this is set to BootstrapTemple website as you cannot 
+    // inject local SVG sprite (using only 'icons/orion-svg-sprite.c2a8f15b.svg' path)
+    // while using file:// protocol
+    // pls don't forget to change to your domain :)
+    injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+
+
+
+
+  </script>
+    <script>
+
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+
+    searchButton.addEventListener('click', function () {
+      searchInput.classList.toggle('active');
+    });
+
+    // Example: simulate loading
+    searchButton.addEventListener('click', function () {
+      searchButton.classList.add('loading');
+      setTimeout(function () {
+        searchButton.classList.remove('loading');
+      }, 3000);
+    });
+
+
+  </script>
+  <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+  <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+</link>
+</html>
