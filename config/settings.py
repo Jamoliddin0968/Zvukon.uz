@@ -156,10 +156,8 @@ STATICFILES_DIRS = [
     '/home/zvukonu2/zvukon.uz/django/static',
 ]
 
-STATIC_ROOT = '/home/zvukonu2/zvukon.uz/django/staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
-# https://pypi.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'
