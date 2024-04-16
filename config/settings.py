@@ -153,10 +153,10 @@ LOCALE_PATHS = [
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    '/home/zvukonu2/zvukon.uz/django/static',
+    os.path.join(BASE_DIR,"static"),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR,"static")
+# STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 
 
