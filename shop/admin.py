@@ -25,6 +25,7 @@ class SubCategoryInline(admin.TabularInline):
     model = SubCategory
     extra = 1
     list_display = ['name','category']
+    
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):
     list_display = ['name',"description"]

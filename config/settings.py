@@ -26,7 +26,7 @@ SECRET_KEY = config("KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['zvukon.uz',"www.zvukon.uz"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -87,23 +87,23 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config("DB_NAME",default="test"),
-        'USER': config("DB_USER",default="root"),
-        'PASSWORD': config("DB_PASSWORD",default="11111111"),
-        'HOST': config("DB_HOST",default="localhost"),
-        'PORT': config("DB_PORT",default="3306"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': config("DB_NAME",default="test"),
+#         'USER': config("DB_USER",default="root"),
+#         'PASSWORD': config("DB_PASSWORD",default="11111111"),
+#         'HOST': config("DB_HOST",default="localhost"),
+#         'PORT': config("DB_PORT",default="3306"),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -163,7 +163,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/zvukonu2/public_html/media'
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
